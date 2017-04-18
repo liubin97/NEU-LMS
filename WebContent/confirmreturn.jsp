@@ -1,6 +1,5 @@
 <%-- 
     Document   : confirmreturn
-    Created on : Mar 1, 2017, 3:50:30 PM
     Author     : GJC
 --%>
 

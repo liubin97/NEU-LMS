@@ -15,12 +15,12 @@
     </head>
     <body>
       <div class="background"></div>
-		<div class="grad"></div>
-       <div class="header">
-			<div>NEU<span>LBS</span></div>
-	  </div>
+		  <div class="grad"></div>
+      <div class="header">
+			     <div>NEU<span>LBS</span></div>
+	    </div>
             
-            <form action="LoginController"  class="login"> 
+      <form action="LoginController"  class="login" method="post"> 
 		
 				<input type="text" type="text" name="username" placeholder="username"/><br>		
 		
@@ -31,7 +31,7 @@
 			</form>
  
            <c:if test="${not empty errMsg}">    
-           <div class="error"><b>Warming: </b> <c:out value="${errMsg}"/><b></b></div>	                  
+                <div class="error"><b>Warming: </b> <c:out value="${errMsg}"/><b></b></div>	                  
            </c:if>
        
     </body>

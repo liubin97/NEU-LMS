@@ -14,10 +14,11 @@
         <title>Books Page</title>
     </head>
     <body>
+    <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
+    	<div class="main">
         <%@include file="header.jsp" %>
-     
-  
-            <div id = "box" style="text-align:center">
+
+            <div id = "box">
 
                 <h3>Welcome to Books Page </h3>
                 <ul>                
@@ -63,5 +64,7 @@
                     </tbody>
                 </table>
             </div>
+           </div>
+        </c:if>
 </body>
 </html>

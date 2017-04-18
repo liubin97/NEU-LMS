@@ -18,15 +18,15 @@
         <title>学生</title>
     </head>
     <body>
+    <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
+        
+        <div class="main">
         <%@include file="header.jsp" %>
-        <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
-        <center>
             <div id = "box">
                 <h3>学生 </h3>
-                <ul>
-                    <li><a href="newstudent.jsp">添加学生</a></li>
-                </ul>
-
+                <div> 
+                	<a href="newstudent.jsp">添加学生</a>
+          		</div>
 <!--                <input type="text" name="searchbox" placeholder="Enter to search..."/>
                 <input type="submit" name ="searchbutton" value="Search"/><br/><br/>-->
 
@@ -74,7 +74,7 @@
                     </tbody>
                 </table>
             </div>
-        </center>
+        </div>
     </c:if>
 </body>
 </html>

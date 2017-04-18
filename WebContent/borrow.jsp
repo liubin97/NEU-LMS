@@ -13,9 +13,9 @@
         <title>Borrow Page</title>
     </head>
     <body>
+    <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
+   	<div class="main">
         <%@include file="header.jsp" %>
-        <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
-      
             <div id = "box" style="text-align:center">
                 <h1>借书!!!</h1>
 
@@ -48,7 +48,7 @@
                    
                     </form>
                 </div>
-          
+          </div>
     </c:if>
 </body>
 </html>

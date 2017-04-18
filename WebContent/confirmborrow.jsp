@@ -17,8 +17,8 @@
         <title>Confirm Borrow Page</title>
     </head>
     <body>
+      <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
         <%@include file="header.jsp" %>
-        <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
         <center>
             <div id = "box">
                 <h1>借书确认</h1>

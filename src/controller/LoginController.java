@@ -29,7 +29,6 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("login");
         response.setContentType("text/html;charset=UTF-8");
 
         if (request.getParameter("username").length() == 0) {

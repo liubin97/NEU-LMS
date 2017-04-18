@@ -21,9 +21,9 @@
         <title>Return Page</title>
     </head>
     <body>
+    <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
+    <div class="main">
         <%@include file="header.jsp" %>
-        <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
-        <center>
             <div id = "box">
                 <h3>返还书本 </h3>
                 <c:if test="${flag}"><font color="green"><b>*** 还书成功!!!</b></font><br/><br/> </c:if>
@@ -89,7 +89,7 @@
                     </tbody>
                 </table>   
             </div>
-        </center>
+		</div>
     </c:if>
 </body>
 </html>

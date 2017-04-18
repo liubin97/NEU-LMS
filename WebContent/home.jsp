@@ -14,10 +14,9 @@
     </head>
 
     <body>
-
+    <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
+	<div class="main">
         <%@include file="header.jsp" %>
-        <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
-        <center>
             <div id = "box">
                 <h2>Welcome !!!</h2>
                 <article>
@@ -43,7 +42,7 @@
                     </p>
                 </article>
             </div>
-        </center>
+ 		</div>
     </c:if>
 </body>
 </html>

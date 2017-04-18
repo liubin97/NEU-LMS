@@ -2,17 +2,30 @@
     Document   : header
     Author     : GJC
 --%>
-
+<!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<center>
-    <h1>NEU Library Management System</h1>
-
-    <a href="home.jsp" class="button">主页面</a>
-    <a href="StudentsController" class="button">学生</a>
-    <a href="BooksController" class="button">书本</a>
-    <a href="borrow.jsp" class="button">借书</a>
-    <a href="ReturnController" class="button">还书</a>
-    <a href="about.jsp" class="button">关于</a>
-    <a href="logout.jsp" class="button">退出</a>
-</center><br/>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/header.css">
+	</head>
+	<body>
+		<div class="header">
+	    	 <div class="menu">
+	      	  <ul>
+		          <li class="active"><a href="home.jsp" style="border-radius: 8px		;">主页</a></li>
+		          <li><a href="StudentsController" style="border-radius: 8px;">学生</a></li>
+		          <li><a href="BooksController" style="border-radius: 8px;">书本</a></li>
+		          <li><a href="borrow.jsp" style="border-radius: 8px;">借书</a></li>
+		          <li><a href="ReturnController" style="border-radius: 8px;">还书</a></li>
+		          <li><a href="logout.jsp" style="border-radius: 8px;">退出</a></li>
+	       	 </ul>
+	     	 </div>
+	     <div class="logo">
+			     <div>NEU&nbsp;<span>LBS</span></div>
+	    </div>
+	   </div>
+   </body>
+</html>

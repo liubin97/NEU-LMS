@@ -13,8 +13,8 @@
         <title>New Book Page</title>
     </head>
     <body>
+    <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
         <%@include file="header.jsp" %>
-        <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
             <div id = "box" style = "text-align:center">
             	 <c:if scope="request" test="${action == 'update'}" var="upd">
                    <h2>修改书本信息</h2>
