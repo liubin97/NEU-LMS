@@ -13,6 +13,9 @@
 	</head>
 	<body>
 		<div class="header">
+			<div class="logo">
+			     <div>NEU&nbsp;<span>LBS</span></div>
+	    	</div>
 	    	 <div class="menu">
 	      	  <ul>
 		          <li class="active"><a href="home.jsp" style="border-radius: 8px		;">主页</a></li>
@@ -23,9 +26,7 @@
 		          <li><a href="logout.jsp" style="border-radius: 8px;">退出</a></li>
 	       	 </ul>
 	     	 </div>
-	     <div class="logo">
-			     <div>NEU&nbsp;<span>LBS</span></div>
-	    </div>
 	   </div>
+	   <br>
    </body>
 </html>

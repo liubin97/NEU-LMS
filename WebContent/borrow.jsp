@@ -21,31 +21,20 @@
 
                 <c:if test="${flag}"><font color="green"><b>*** 借书成功!!!</b></font><br/><br/> </c:if>
 
-                    <form action="BorrowController">
-                      
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>Student Id: </td>
-                                        <td>
-                                            <input type="text" name="studentid" required placeholder="输入Student Id:" style="width: 350px"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>ISBN NO.: </td>
-                                        <td>
-                                            <input type="text" name="bookid" required placeholder="输入ISBN NO.:" style="width: 350px"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <input type="submit" name="submit" value="Submit"/>                                
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                   
+                    <form action="BorrowController" class = "borrow">
+                        <label for="studentID">
+                            <span>学号:</span>
+                             <input type="text" name="studentid" id = "studentID" required placeholder="输入学号" />
+                        </label>
+                        <br>
+                        <br>
+                        <label for = "bookID">
+                            <span>书号 : </span>
+                            <input type="text" name="bookid" id = "bookID" required placeholder="输入书号" />
+                        </label>
+                        <br>
+                        <br>
+                        <input type="submit" name="submit" value="提交"/>                  
                     </form>
                 </div>
           </div>

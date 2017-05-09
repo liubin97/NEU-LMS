@@ -25,7 +25,7 @@
             <div id = "box">
                 <h3>学生 </h3>
                 <div> 
-                	<a href="newstudent.jsp">添加学生</a>
+                	<a href="newstudent.jsp" class = "button">添加学生</a>
           		</div>
 <!--                <input type="text" name="searchbox" placeholder="Enter to search..."/>
                 <input type="submit" name ="searchbutton" value="Search"/><br/><br/>-->

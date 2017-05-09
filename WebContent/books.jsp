@@ -20,9 +20,9 @@
 
             <div id = "box">
 
-                <h3>Welcome to Books Page </h3>
+                <h3>书本 </h3>
                 <ul>                
-                    <li><a href="newbook.jsp">Add New Book</a></li>
+                    <a href="newbook.jsp" class = "button"> 添加新书</a>
                 </ul>
 
                 <!--<input type="text" name="searchbox" placeholder="Enter to search..."/>
