@@ -83,7 +83,7 @@
                                     </c:choose>
                                     <c:out value="${fine}"/>
                                 </td>
-                                <td><a href="ReturnController?id=${br.id}&fine=${fine}&returndate=${returnDate}">Return</a></td>
+                                <td><a href="ReturnController?id=${br.id}&fine=${fine}&returndate=${returnDate}">还书</a></td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -92,4 +92,8 @@
 		</div>
     </c:if>
 </body>
+<script >
+var d = document.getElementById("returnHeader");
+d.className += "active";
+</script>
 </html>

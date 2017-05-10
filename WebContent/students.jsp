@@ -24,11 +24,9 @@
         <%@include file="header.jsp" %>
             <div id = "box">
                 <h3>学生 </h3>
-                <div> 
-                	<a href="newstudent.jsp" class = "button">添加学生</a>
-          		</div>
-<!--                <input type="text" name="searchbox" placeholder="Enter to search..."/>
-                <input type="submit" name ="searchbutton" value="Search"/><br/><br/>-->
+            
+                <input type="text" name="searchbox" placeholder="Enter to search..."/>
+                <input type="submit" name ="searchbutton" value="Search"/><br/><br/>
 
                 <c:if scope="request" test="${exists == 'yes'}" var="reg">
                     <font color="red"><b>*** 学生Id 重复!!</b></font><br/><br/>
@@ -40,19 +38,19 @@
                     <font color="green"><b>*** 更新成功!!</b></font><br/><br/>
                 </c:if>
 
-                <table border="1">
+                <table border="1" style="border: none;">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone No</th>
-                            <th>Address</th>
-                            <th>Gender</th>
-                            <th>Marital Status</th>
-                            <th>Department</th>
-                            <th colspan="2">Action</th>
+                            <th>学号</th>
+                            <th>姓</th>
+                            <th>名</th>
+                            <th>邮箱</th>
+                            <th>电话</th>
+                            <th>地址</th>
+                            <th>性别</th>
+                            <th>可借书？</th>
+                            <th>学院</th>
+                            <th colspan="2">行为</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,17 +62,23 @@
                                 <td><c:out value="${student.email}"/></td>
                                 <td><c:out value="${student.phoneNo}"/></td>
                                 <td><c:out value="${student.address}"/></td>
-                                <td><c:out value="${student.gender == 1 ? 'Male' : 'Female'}"/></td>
-                                <td><c:out value="${student.ms == 1 ? 'Married' : 'Unmarried'}"/></td>
+                                <td><c:out value="${student.gender == 1 ? '男' : '女'}"/></td>
+                                <td><c:out value="${student.ms == 1 ? '可借' : '不可借'}"/></td>
                                 <td><c:out value="${student.dept}"/></td>
-                                <td><a href="StudentsController?action=update&id=${student.id}">修改</a></td>
-                                <td><a href="StudentsController?action=delete&id=${student.id}">删除</a></td>
+                                <td style="color = 'green'"><a href="StudentsController?action=update&id=${student.id}">修改</a></td>
+                                <td style="color = 'red'"><a href="StudentsController?action=delete&id=${student.id}">删除</a></td>
                             </tr>
                         </c:forEach>
                     </tbody>
+                    <tfoot><tr><td  > <a href="newstudent.jsp" ><img class = "addImage" src="images/add.png"></a></td> </tr></tfoot>
                 </table>
+
             </div>
         </div>
     </c:if>
 </body>
+<script >
+var d = document.getElementById("studentHeader");
+d.className += "active";
+</script>
 </html>

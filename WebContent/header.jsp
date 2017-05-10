@@ -18,11 +18,11 @@
 	    	</div>
 	    	 <div class="menu">
 	      	  <ul>
-		          <li class="active"><a href="home.jsp" style="border-radius: 8px		;">主页</a></li>
-		          <li><a href="StudentsController" style="border-radius: 8px;">学生</a></li>
-		          <li><a href="BooksController" style="border-radius: 8px;">书本</a></li>
-		          <li><a href="borrow.jsp" style="border-radius: 8px;">借书</a></li>
-		          <li><a href="ReturnController" style="border-radius: 8px;">还书</a></li>
+		          <li id="homeHeader"><a href="home.jsp" style="border-radius: 8px		;">主页</a></li>
+		          <li id="studentHeader"> <a href="StudentsController" style="border-radius: 8px;">学生</a></li>
+		          <li id="bookHeader"><a href="BooksController" style="border-radius: 8px;">书本</a></li>
+		          <li id="borrowHeader"><a href="borrow.jsp" style="border-radius: 8px;">借书</a></li>
+		          <li id="returnHeader"><a href="ReturnController" style="border-radius: 8px;">还书</a></li>
 		          <li><a href="logout.jsp" style="border-radius: 8px;">退出</a></li>
 	       	 </ul>
 	     	 </div>

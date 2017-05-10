@@ -23,13 +23,13 @@
 
                     <form action="BorrowController" class = "borrow">
                         <label for="studentID">
-                            <span>学号:</span>
+                            <span>借书人:</span>
                              <input type="text" name="studentid" id = "studentID" required placeholder="输入学号" />
                         </label>
                         <br>
                         <br>
                         <label for = "bookID">
-                            <span>书号 : </span>
+                            <span>所借书: </span>
                             <input type="text" name="bookid" id = "bookID" required placeholder="输入书号" />
                         </label>
                         <br>
@@ -40,4 +40,8 @@
           </div>
     </c:if>
 </body>
+<script >
+var d = document.getElementById("borrowHeader");
+d.className += "active";
+</script>
 </html>

@@ -15,18 +15,17 @@
     </head>
     <body>
     <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
-    	<div class="main">
+    	<div class="main" action = "StudentsController" method="get">
         <%@include file="header.jsp" %>
 
             <div id = "box">
 
                 <h3>书本 </h3>
-                <ul>                
-                    <a href="newbook.jsp" class = "button"> 添加新书</a>
-                </ul>
-
-                <!--<input type="text" name="searchbox" placeholder="Enter to search..."/>
-                <input type="submit" name ="searchbutton" value="Search"/><br/><br/>-->
+                <form>
+                    <input type="text" name="searchbox" placeholder="Enter to search..."/>
+                <input type="submit" name ="searchbutton" value="Search"/>
+                </form>
+                <br/><br/>
 
                 <c:if scope="request" test="${exists == 'yes'}" var="reg">
                     <font color="red"><b>*** Id should be unique!!</b></font><br/><br/>
@@ -41,11 +40,11 @@
                 <table border="1" style="width: 100%">
                     <thead>
                         <tr>
-                            <th>ISBN NO.</th>
-                            <th>Title</th>
-                            <th>Author Name</th>
-                            <th>Category</th>
-                            <th>Self NO.</th>                    
+                            <th>书号</th>
+                            <th>书名</th>
+                            <th>作者名</th>
+                            <th>类别</th>
+                            <th>数目</th>                    
                             <th colspan="2">Action</th>
                         </tr>
                     </thead>
@@ -57,14 +56,29 @@
                                 <td><c:out value="${book.authorname}"/></td>
                                 <td><c:out value="${book.category}"/></td>
                                 <td><c:out value="${book.selfno}"/></td>
-                                <td><a href="BooksController?action=update&isbn=${book.isbn}">Update</a></td>
-                                <td><a href="BooksController?action=delete&isbn=${book.isbn}">Delete</a></td>
+                                <td><a href="BooksController?action=update&isbn=${book.isbn}">更新</a></td>
+                                <td><a href="BooksController?action=delete&isbn=${book.isbn}">删除</a></td>
                             </tr>
+
                         </c:forEach>
                     </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td > <a href="newbook.jsp" > <img class = "addImage" src="images/add.png"></a>
+                            </td> 
+                        </tr>
+
+                    </tfoot>
+
+
                 </table>
             </div>
            </div>
         </c:if>
 </body>
+<script >
+var d = document.getElementById("bookHeader");
+d.className += "active";
+</script>
 </html>
