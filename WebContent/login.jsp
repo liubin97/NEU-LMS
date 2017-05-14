@@ -27,7 +27,6 @@
 				<input type="password" name="password" placeholder="password" />
 			
 				<input type="submit" value="Login" >			
-		
 			</form>
  
            <c:if test="${not empty errMsg}">    
