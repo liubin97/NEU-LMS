@@ -109,7 +109,7 @@ public class StudentsController extends HttpServlet {
         	StudentsDao studentsDao = new StudentsDao();	
     		if(request.getParameter("searchbox").length() == 0){
     			request.setAttribute("errMsg", "²»ÄÜÎª¿Õ!!!");
-    			request.getRequestDispatcher("home.jsp").forward(request, response);
+    			request.getRequestDispatcher("students.jsp").forward(request, response);
     		}
     		
     		String searchKey = request.getParameter("searchbox");
