@@ -104,6 +104,18 @@ public class StudentsController extends HttpServlet {
             request.setAttribute("id", student.getId());
             request.getRequestDispatcher("students.jsp").forward(request, response);
 
+        } else if(request.getParameter("searchbox") != null){ 
+ //       	System.out.println("on");
+        	StudentsDao studentsDao = new StudentsDao();	
+    		if(request.getParameter("searchbox").length() == 0){
+    			request.setAttribute("errMsg", "²»ÄÜÎª¿Õ!!!");
+    			request.getRequestDispatcher("home.jsp").forward(request, response);
+    		}
+    		
+    		String searchKey = request.getParameter("searchbox");
+    		Students student = studentsDao.getStudentById(searchKey);
+    		request.setAttribute("student", student);
+    		request.getRequestDispatcher("students.jsp").forward(request, response);
         } else {
 //            out.println(request.getParameter("action"));
             StudentsDao dao = new StudentsDao();

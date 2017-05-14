@@ -24,9 +24,11 @@
         <%@include file="header.jsp" %>
             <div id = "box">
                 <h3>学生 </h3>
-            
-                <input type="text" name="searchbox" placeholder="Enter to search..."/>
-                <input type="submit" name ="searchbutton" value="Search"/><br/><br/>
+            <form action="StudentsController">
+             <input type="text" name="searchbox" placeholder="Enter id  to search..."/>
+             <input type="submit" name ="searchbutton" value="Search"/><br/><br/>
+            </form>
+                
 
                 <c:if scope="request" test="${exists == 'yes'}" var="reg">
                     <font color="red"><b>*** 学生Id 重复!!</b></font><br/><br/>
@@ -54,6 +56,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <c:if test="${allStudent==null}">
+                    <tr <c:if test="${id == student.id}"> style="background-color: gainsboro" </c:if>>
+                                <td><c:out value="${student.id}"/></td>
+                                <td><c:out value="${student.firstName}"/></td>
+                                <td><c:out value="${student.lastName}"/></td>
+                                <td><c:out value="${student.email}"/></td>
+                                <td><c:out value="${student.phoneNo}"/></td>
+                                <td><c:out value="${student.address}"/></td>
+                                <td><c:out value="${student.gender == 1 ? '男' : '女'}"/></td>
+                                <td><c:out value="${student.ms == 1 ? '可借' : '不可借'}"/></td>
+                                <td><c:out value="${student.dept}"/></td>
+                                <td style="color = 'green'"><a href="StudentsController?action=update&id=${student.id}">修改</a></td>
+                                <td style="color = 'red'"><a href="StudentsController?action=delete&id=${student.id}">删除</a></td>
+                            </tr>
+                    </c:if>
                         <c:forEach items="${allStudents}" var="student">
                             <tr <c:if test="${id == student.id}"> style="background-color: gainsboro" </c:if>>
                                 <td><c:out value="${student.id}"/></td>
