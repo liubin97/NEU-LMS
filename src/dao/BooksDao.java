@@ -89,6 +89,36 @@ public class BooksDao {
 
         return books;
     }
+    public List<Books> search(String searchKey){
+    	List<Books> books = new ArrayList<>();
+        String sql = "SELECT * from " + TABLE + " where isbn like '%" + searchKey + "%' or `book name` like '%" + searchKey +
+        		"%' or `author name` like '%" + searchKey + "%' or category like '%" + searchKey +
+        		"%' or `self no` like '%"+ searchKey +"%' ";
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+           
+                Books book = new Books();
+
+                book.setIsbn(rs.getString(1));
+                book.setBookname(rs.getString(2));
+                book.setAuthorname(rs.getString(3));
+                book.setCategory(rs.getString(4));
+                book.setSelfno(rs.getInt(5));
+
+                books.add(book);
+            }
+        } catch (Exception e) {
+            System.out.println("EXCEPTION: " + e);
+        }
+
+        return books;
+    	
+    }
+    
 
     public Books getBookById(String bookId) {
 

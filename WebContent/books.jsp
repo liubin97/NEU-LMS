@@ -49,18 +49,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:if test="${allBooks==null}">
-                    <tr <c:if test="${isbn == book.isbn}"> style="background-color: " </c:if>>
-                                <td><c:out value="${book.isbn}"/></td>
-                                <td><c:out value="${book.bookname}"/></td>
-                                <td><c:out value="${book.authorname}"/></td>
-                                <td><c:out value="${book.category}"/></td>
-                                <td><c:out value="${book.selfno}"/></td>
-                                <td><a href="BooksController?action=update&isbn=${book.isbn}">更新</a></td>
-                                <td><a href="BooksController?action=delete&isbn=${book.isbn}">删除</a></td>
-                            </tr>
-                    </c:if>
-                    
+                         
                         <c:forEach items="${allBooks}" var="book">
                             <tr <c:if test="${isbn == book.isbn}"> style="background-color: " </c:if>>
                                 <td><c:out value="${book.isbn}"/></td>

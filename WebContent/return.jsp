@@ -27,9 +27,10 @@
             <div id = "box">
                 <h3>返还书本 </h3>
                 <c:if test="${flag}"><font color="green"><b>*** 还书成功!!!</b></font><br/><br/> </c:if>
-
+					<form action="ReturnController">
                     <input type="text" name="searchbox" placeholder="Enter to search..."/>
                     <input type="submit" name ="searchbutton" value="Search"/><br/><br/>
+                    </form>
 
                     <table border="1" style="width: 100%">
                         <thead>
@@ -46,6 +47,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                        
                         <c:forEach var="br" items="${allBr}">
                             <tr>
                                 <td><c:out value="${br.id}"/></td>

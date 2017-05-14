@@ -109,10 +109,9 @@ public class BooksController extends HttpServlet {
 				request.setAttribute("errMsg", "²»ÄÜÎª¿Õ!!!");
 				request.getRequestDispatcher("books.jsp").forward(request, response);
 			}
-
 			String searchKey = request.getParameter("searchbox");
-			Books book = booksDao.getBookById(searchKey);
-			request.setAttribute("book", book);
+			List<Books> allBooks = booksDao.search(searchKey);
+			request.setAttribute("allBooks", allBooks);
 			request.getRequestDispatcher("books.jsp").forward(request, response);
 		} else {
 			System.out.println(request.getParameter("action"));

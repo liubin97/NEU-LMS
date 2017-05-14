@@ -6,6 +6,8 @@ import  model.Return;
 import  util.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -42,6 +44,49 @@ public class ReturnDao {
             return false;
         }
         return true;
+    }
+    
+    public Return getReturnByStdId(String studentId){
+    	Return ret = new Return();
+    	String sql = "SELECT * from " + TABLE + " WHERE `student id` = ?";
+    	try{
+    		PreparedStatement ps = connection.prepareStatement(sql);
+    		ps.setString(1, studentId);
+    		ResultSet rs = ps.executeQuery();
+    		while(rs.next()){
+    			ret.setId(rs.getInt(1));
+            	ret.setStudentId(rs.getString(2));
+            	ret.setBookId(rs.getString(3));
+            	ret.setReturnDate(rs.getDate(4));
+            	ret.setFine(rs.getInt(5));
+    		}
+    	}catch(Exception e){
+    		System.out.println("EXCEPTION: " + e);
+    	}
+     	//System.out.println(ret.getId());
+    	return ret;
+    }
+    
+    public Return getReturnById(int id){
+    	Return ret = new Return();
+    	String sql = "SELECT * from " + TABLE + " WHERE isbn =" + id;
+    	try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+            	ret.setId(rs.getInt(1));
+            	ret.setStudentId(rs.getString(2));
+            	ret.setBookId(rs.getString(3));
+            	ret.setReturnDate(rs.getDate(4));
+            	ret.setFine(rs.getInt(5));
+            	
+            }
+        } catch (Exception e) {
+            System.out.println("EXCEPTION: " + e);
+        }
+   
+        return ret;
+    
     }
 
     public void closeConnection() {

@@ -124,6 +124,41 @@ public class StudentsDao {
 
         return student;
     }
+    
+    public List<Students> Search(String searchKey){
+    	
+    	List<Students> students = new ArrayList<>();
+
+        
+        String sql = "SELECT * from " + TABLE + " WHERE Id like '%" + searchKey + "%' or `First Name` like '%" + searchKey + 
+        		"%' or `Last Name` like '%" + searchKey + "%' or Email like '%" + searchKey + 
+        		"%' or `Phone No` like '%" + searchKey + "%' or Address like '%" + searchKey + 
+        		"%' or Dept like '%" + searchKey + "%'" ;
+
+        try {
+        	Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+           
+            while (rs.next()) {
+            	Students student = new Students();
+                student.setId(rs.getInt(1));
+                student.setFirstName(rs.getString(2));
+                student.setLastName(rs.getString(3));
+                student.setEmail(rs.getString(4));
+                student.setPhoneNo(rs.getString(5));
+                student.setAddress(rs.getString(6));
+                student.setGender(rs.getInt(7));
+                student.setMs(rs.getInt(8));
+                student.setDept(rs.getString(9));
+                students.add(student);
+            }
+
+        } catch (Exception e) {
+            System.out.println("EXCEPTION: " + e);
+        }
+
+        return students;
+    }
 
     public boolean updateStudent(Students student) {
         String sql = "UPDATE " + TABLE

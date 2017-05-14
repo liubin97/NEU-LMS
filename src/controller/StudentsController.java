@@ -113,8 +113,8 @@ public class StudentsController extends HttpServlet {
     		}
     		
     		String searchKey = request.getParameter("searchbox");
-    		Students student = studentsDao.getStudentById(searchKey);
-    		request.setAttribute("student", student);
+    		List<Students> allStudents = studentsDao.Search(searchKey);
+    		request.setAttribute("allStudents", allStudents);
     		request.getRequestDispatcher("students.jsp").forward(request, response);
         } else {
 //            out.println(request.getParameter("action"));
