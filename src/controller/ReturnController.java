@@ -113,59 +113,6 @@ public class ReturnController extends HttpServlet {
 
 			} else if (request.getParameter("searchbox") != null) {
 
-//				BorrowDao borrowDao = new BorrowDao();
-//				BooksDao booksDao = new BooksDao();
-//				StudentsDao studentsDao = new StudentsDao();
-//				String searchKey = request.getParameter("searchbox");
-//				List<Borrow> allBorrows = borrowDao.search(searchKey);
-//				List<Books> allBooks = booksDao.search(searchKey);
-//				List<Students> allStudents = studentsDao.Search(searchKey);
-//				List<BRCombo> allBr = new ArrayList<>();
-//				for (Borrow b : allBorrows) {
-//					for(Books book : allBooks){
-//						if(book.getIsbn().equals(b.getBookId())){
-//							for(Students student : allStudents){
-//								if(student.getId() == Integer.parseInt(b.getStudentId())){
-//									BRCombo brc = new BRCombo();
-//
-//									brc.setId(b.getId());
-//									brc.setTitle(book.getBookname());
-//									brc.setAuthorName(book.getAuthorname());
-//
-//									brc.setStudentId(b.getStudentId());
-//									brc.setStudentName(student.getFirstName() + " " + student.getLastName());
-//
-//									brc.setBorrowDate(b.getBorrowDate());
-//									brc.setReturnDate(b.getReturnDate());
-//
-//									brc.setStatus(b.getStatus());
-//
-//									allBr.add(brc);
-//								}
-//							}
-//						}
-//						
-//					}
-////
-//					Books book = booksDao.getBookById(b.getBookId());
-//					Students student = studentsDao.getStudentById(b.getStudentId());
-//
-//					BRCombo brc = new BRCombo();
-//
-//					brc.setId(b.getId());
-//					brc.setTitle(book.getBookname());
-//					brc.setAuthorName(book.getAuthorname());
-//
-//					brc.setStudentId(b.getStudentId());
-//					brc.setStudentName(student.getFirstName() + " " + student.getLastName());
-//
-//					brc.setBorrowDate(b.getBorrowDate());
-//					brc.setReturnDate(b.getReturnDate());
-
-//					brc.setStatus(b.getStatus());
-//
-//					allBr.add(brc);
-//				}
 				//System.out.println(allBr.size());
 				BRComboDao brcDao = new BRComboDao();
 				if (request.getParameter("searchbox").length() == 0) {
@@ -182,34 +129,7 @@ public class ReturnController extends HttpServlet {
 				request.getRequestDispatcher("return.jsp").forward(request, response);
 
 			} else {
-//				BorrowDao borrowDao = new BorrowDao();
-//				List<Borrow> allBorrows = borrowDao.getAllBorrowsToReturn();
-//				BooksDao booksDao = new BooksDao();
-//				StudentsDao studentsDao = new StudentsDao();
-//
-//				List<BRCombo> allBr = new ArrayList<>();
-//
-//				for (Borrow b : allBorrows) {
-//
-//					Books book = booksDao.getBookById(b.getBookId());
-//					Students student = studentsDao.getStudentById(b.getStudentId());
-//
-//					BRCombo brc = new BRCombo();
-//
-//					brc.setId(b.getId());
-//					brc.setTitle(book.getBookname());
-//					brc.setAuthorName(book.getAuthorname());
-//
-//					brc.setStudentId(b.getStudentId());
-//					brc.setStudentName(student.getFirstName() + " " + student.getLastName());
-//
-//					brc.setBorrowDate(b.getBorrowDate());
-//					brc.setReturnDate(b.getReturnDate());
-//
-//					brc.setStatus(b.getStatus());
-//
-//					allBr.add(brc);
-//				}
+
 				BRComboDao brcDao = new BRComboDao();
 				List<BRCombo> allBr = brcDao.getAllBrc();
 				brcDao.closeConnection();
