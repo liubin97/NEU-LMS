@@ -25,7 +25,7 @@ public class BorrowDao {
 
     public boolean borrowBook(Borrow borrow) {
 
-        String sql = "INSERT into " + TABLE + "(`student id`, `book id`, `borrow date`, `return date`) "
+        String sql = "INSERT into " + TABLE + "(student_id, book_id, borrow_date, return_date) "
                 + "VALUES(?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -121,6 +121,34 @@ public class BorrowDao {
             System.out.println("EXCEPTION: " + e);
         }
         return borrows;
+    }
+    
+    public List<Borrow> search(String searchKey){
+    	 List<Borrow> borrows = new ArrayList<>();
+         String sql = "SELECT * from " + TABLE + " WHERE status = 0 " + "and ( id like '%" + searchKey + 
+        		 "%' or student_id like '%" + searchKey + "%' or borrow_date like '%" + searchKey + 
+        		 "%' or return_date like '%" + searchKey + "%')";
+
+         try {
+             Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql);
+
+             while (rs.next()) {
+                 Borrow borrow = new Borrow();
+
+                 borrow.setId(rs.getInt(1));
+                 borrow.setStudentId(rs.getString(2));
+                 borrow.setBookId(rs.getString(3));
+                 borrow.setBorrowDate(rs.getDate(4));
+                 borrow.setReturnDate(rs.getDate(5));
+                 borrow.setStatus(rs.getInt(6));
+
+                 borrows.add(borrow);
+             }
+         } catch (Exception e) {
+             System.out.println("EXCEPTION: " + e);
+         }
+         return borrows;
     }
 
     public boolean updateStatusById(int borrowId) {

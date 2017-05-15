@@ -27,7 +27,7 @@ public class StudentsDao {
 
         System.out.println(student.getFirstName() + " " + student.getDept());
 
-        String sql = "INSERT into " + TABLE + "(id, `first name`, `last name`, email, `phone no`, address, gender, ms, dept) "
+        String sql = "INSERT into " + TABLE + "(id, first_name, last_name, email, phone_no, address, gender, ms, dept) "
                 + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -130,9 +130,9 @@ public class StudentsDao {
     	List<Students> students = new ArrayList<>();
 
         
-        String sql = "SELECT * from " + TABLE + " WHERE Id like '%" + searchKey + "%' or `First Name` like '%" + searchKey + 
-        		"%' or `Last Name` like '%" + searchKey + "%' or Email like '%" + searchKey + 
-        		"%' or `Phone No` like '%" + searchKey + "%' or Address like '%" + searchKey + 
+        String sql = "SELECT * from " + TABLE + " WHERE Id like '%" + searchKey + "%' or First_Name like '%" + searchKey + 
+        		"%' or Last_Name like '%" + searchKey + "%' or Email like '%" + searchKey + 
+        		"%' or Phone_No like '%" + searchKey + "%' or Address like '%" + searchKey + 
         		"%' or Dept like '%" + searchKey + "%'" ;
 
         try {
@@ -162,7 +162,7 @@ public class StudentsDao {
 
     public boolean updateStudent(Students student) {
         String sql = "UPDATE " + TABLE
-                + " SET id = ?, `first name` = ?, `last name` = ?, email = ?, `phone no` = ?, address = ?, gender = ?, ms = ?, dept = ? WHERE id = ?";
+                + " SET id = ?, first_name = ?, last_name = ?, email = ?, phone_no = ?, address = ?, gender = ?, ms = ?, dept = ? WHERE id = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);

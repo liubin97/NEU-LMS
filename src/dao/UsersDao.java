@@ -24,7 +24,7 @@ public class UsersDao {
     }
 
     public void checkUser(User user) {
-        String sql = "SELECT `user name` from " + USER_TABLE + " WHERE `user name` = ?";
+        String sql = "SELECT `user name` from " + USER_TABLE + " WHERE user_name = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, user.getUsername());
@@ -41,7 +41,7 @@ public class UsersDao {
     }
 
     public void addUser(User user) {
-        String sql = "INSERT into " + USER_TABLE + "(`user name`, password, email) VALUES(?, ?, ?)";
+        String sql = "INSERT into " + USER_TABLE + "(user_name, password, email) VALUES(?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
 
@@ -57,7 +57,7 @@ public class UsersDao {
     }
 
     public void deleteUser(String userId) {
-        String sql = "DELETE from " + USER_TABLE + " WHERE `user name` = ?";
+        String sql = "DELETE from " + USER_TABLE + " WHERE user_name = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
 
@@ -70,7 +70,7 @@ public class UsersDao {
     }
 
     public void updateUser(User user) {
-        String sql = "UPDATE " + USER_TABLE + " SET password = ?, email = ? WHERE `user name` = ?";
+        String sql = "UPDATE " + USER_TABLE + " SET password = ?, email = ? WHERE user_name = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -112,7 +112,7 @@ public class UsersDao {
 
     public User getUserById(String userId) {
         User user = new User();
-        String sql = "SELECT * from " + USER_TABLE + " WHERE `user name` = ?";
+        String sql = "SELECT * from " + USER_TABLE + " WHERE user_name = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);

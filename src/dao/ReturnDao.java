@@ -24,7 +24,7 @@ public class ReturnDao {
 
     public boolean addReturn(Return returnObj) {
 
-        String sql = "INSERT into " + TABLE + "(id, `student id`, `book id`, `return date`, fine) "
+        String sql = "INSERT into " + TABLE + "(id, student_id, book_id, return_date, fine) "
                 + "VALUES(?, ?, ?, ?, ?)";
         try {
             BorrowDao dao = new BorrowDao();
@@ -48,7 +48,7 @@ public class ReturnDao {
     
     public Return getReturnByStdId(String studentId){
     	Return ret = new Return();
-    	String sql = "SELECT * from " + TABLE + " WHERE `student id` = ?";
+    	String sql = "SELECT * from " + TABLE + " WHERE student_id = ?";
     	try{
     		PreparedStatement ps = connection.prepareStatement(sql);
     		ps.setString(1, studentId);

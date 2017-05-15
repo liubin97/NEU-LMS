@@ -29,7 +29,7 @@ public class BooksDao {
 
     public boolean addBooks(Books book) {
 
-        String sql = "INSERT into " + TABLE + "(isbn, `book name`, `author name`, category, `self no`) "
+        String sql = "INSERT into " + TABLE + "(isbn, book_name, author_name, category, self_no) "
                 + "VALUES(?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -91,9 +91,9 @@ public class BooksDao {
     }
     public List<Books> search(String searchKey){
     	List<Books> books = new ArrayList<>();
-        String sql = "SELECT * from " + TABLE + " where isbn like '%" + searchKey + "%' or `book name` like '%" + searchKey +
-        		"%' or `author name` like '%" + searchKey + "%' or category like '%" + searchKey +
-        		"%' or `self no` like '%"+ searchKey +"%' ";
+        String sql = "SELECT * from " + TABLE + " where isbn like '%" + searchKey + "%' or book_name like '%" + searchKey +
+        		"%' or author_name like '%" + searchKey + "%' or category like '%" + searchKey +
+        		"%' or self_no like '%"+ searchKey +"%' ";
 
         try {
             Statement statement = connection.createStatement();
@@ -148,7 +148,7 @@ public class BooksDao {
 
     public boolean updateBooks(Books book) {
         String sql = "UPDATE " + TABLE
-                + " SET isbn = ?, `book name` = ?, `author name` = ?, category = ?, `self no` = ? WHERE isbn = ?";
+                + " SET isbn = ?, book_name = ?, author_name = ?, category = ?, self_no = ? WHERE isbn = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);

@@ -111,30 +111,57 @@ public class ReturnController extends HttpServlet {
 			} else if (request.getParameter("searchbox") != null) {
 
 				BorrowDao borrowDao = new BorrowDao();
-				List<Borrow> allBorrows = borrowDao.getAllBorrowsToReturn();
+				BooksDao booksDao = new BooksDao();
 				StudentsDao studentsDao = new StudentsDao();
 				String searchKey = request.getParameter("searchbox");
-				Students student = studentsDao.getStudentById(searchKey);
-				BooksDao booksDao = new BooksDao();
+				List<Borrow> allBorrows = borrowDao.search(searchKey);
+				List<Books> allBooks = booksDao.search(searchKey);
+				List<Students> allStudents = studentsDao.Search(searchKey);
 				List<BRCombo> allBr = new ArrayList<>();
 				for (Borrow b : allBorrows) {
-					if (b.getStudentId().equals(searchKey)) {
-						BRCombo brc = new BRCombo();
-						Books book = booksDao.getBookById(b.getBookId());
-						brc.setId(b.getId());
-						brc.setTitle(book.getBookname());
-						brc.setAuthorName(book.getAuthorname());
+					for(Books book : allBooks){
+						if(book.getIsbn().equals(b.getBookId())){
+							for(Students student : allStudents){
+								if(student.getId() == Integer.parseInt(b.getStudentId())){
+									BRCombo brc = new BRCombo();
 
-						brc.setStudentId(b.getStudentId());
-						brc.setStudentName(student.getFirstName() + " " + student.getLastName());
+									brc.setId(b.getId());
+									brc.setTitle(book.getBookname());
+									brc.setAuthorName(book.getAuthorname());
 
-						brc.setBorrowDate(b.getBorrowDate());
-						brc.setReturnDate(b.getReturnDate());
+									brc.setStudentId(b.getStudentId());
+									brc.setStudentName(student.getFirstName() + " " + student.getLastName());
 
-						brc.setStatus(b.getStatus());
+									brc.setBorrowDate(b.getBorrowDate());
+									brc.setReturnDate(b.getReturnDate());
 
-						allBr.add(brc);
+									brc.setStatus(b.getStatus());
+
+									allBr.add(brc);
+								}
+							}
+						}
+						
 					}
+//
+//					Books book = booksDao.getBookById(b.getBookId());
+//					Students student = studentsDao.getStudentById(b.getStudentId());
+//
+//					BRCombo brc = new BRCombo();
+//
+//					brc.setId(b.getId());
+//					brc.setTitle(book.getBookname());
+//					brc.setAuthorName(book.getAuthorname());
+//
+//					brc.setStudentId(b.getStudentId());
+//					brc.setStudentName(student.getFirstName() + " " + student.getLastName());
+//
+//					brc.setBorrowDate(b.getBorrowDate());
+//					brc.setReturnDate(b.getReturnDate());
+
+//					brc.setStatus(b.getStatus());
+//
+//					allBr.add(brc);
 				}
 				System.out.println(allBr.size());
 				request.setAttribute("allBr", allBr);
