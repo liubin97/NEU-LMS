@@ -82,4 +82,12 @@ public class BRComboDao {
 		 return allBrs;
 	 }
 	 
+	 public void closeConnection() {
+
+	        try {
+	            connection.close();
+	        } catch (Exception ex) {
+	            System.out.println(ex);
+	        }
+	    }
 }

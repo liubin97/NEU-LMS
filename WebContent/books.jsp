@@ -15,7 +15,7 @@
     </head>
     <body>
     <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
-    	<div class="main" action = "StudentsController" method="get">
+    	<div class="main" >
         <%@include file="header.jsp" %>
 
             <div id = "box">

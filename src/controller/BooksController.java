@@ -41,6 +41,7 @@ public class BooksController extends HttpServlet {
 			List<Books> allBooks = dao.getAllBooks();
 			dao.closeConnection();
 			request.setAttribute("allBooks", allBooks);
+			request.setAttribute("size", allBooks.size());
 			request.getRequestDispatcher("books.jsp").forward(request, response);
 
 		} else if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {
@@ -75,6 +76,7 @@ public class BooksController extends HttpServlet {
 			List<Books> allBooks = dao.getAllBooks();
 			dao.closeConnection();
 			request.setAttribute("allBooks", allBooks);
+			request.setAttribute("size", allBooks.size());
 			request.setAttribute("isbn", book.getIsbn());
 			request.getRequestDispatcher("books.jsp").forward(request, response);
 
@@ -99,6 +101,7 @@ public class BooksController extends HttpServlet {
 			List<Books> allBooks = dao.getAllBooks();
 			dao.closeConnection();
 			request.setAttribute("allBooks", allBooks);
+			request.setAttribute("size", allBooks.size());
 			request.setAttribute("isbn", book.getIsbn());
 			request.getRequestDispatcher("books.jsp").forward(request, response);
 
@@ -111,7 +114,9 @@ public class BooksController extends HttpServlet {
 			}
 			String searchKey = request.getParameter("searchbox");
 			List<Books> allBooks = booksDao.search(searchKey);
+			booksDao.closeConnection();
 			request.setAttribute("allBooks", allBooks);
+			request.setAttribute("size", allBooks.size());
 			request.getRequestDispatcher("books.jsp").forward(request, response);
 		} else {
 			//System.out.println(request.getParameter("action"));
@@ -119,6 +124,7 @@ public class BooksController extends HttpServlet {
 			List<Books> allBooks = dao.getAllBooks();
 			dao.closeConnection();
 			request.setAttribute("allBooks", allBooks);
+			request.setAttribute("size", allBooks.size());
 			request.getRequestDispatcher("books.jsp").forward(request, response);
 		}
 	}

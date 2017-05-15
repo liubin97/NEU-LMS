@@ -101,6 +101,7 @@ public class ReturnController extends HttpServlet {
 						}
 
 						request.setAttribute("allBr", allBr);
+						request.setAttribute("size", allBr.size());
 						request.setAttribute("flag", flag);
 						request.getRequestDispatcher("return.jsp").forward(request, response);
 					} else {
@@ -174,8 +175,10 @@ public class ReturnController extends HttpServlet {
 				String searchKey = request.getParameter("searchbox");
 				
 				List<BRCombo> allBr = brcDao.search(searchKey);
+				brcDao.closeConnection();
 
 				request.setAttribute("allBr", allBr);
+				request.setAttribute("size", allBr.size());
 				request.getRequestDispatcher("return.jsp").forward(request, response);
 
 			} else {
@@ -209,8 +212,10 @@ public class ReturnController extends HttpServlet {
 //				}
 				BRComboDao brcDao = new BRComboDao();
 				List<BRCombo> allBr = brcDao.getAllBrc();
+				brcDao.closeConnection();
 
 				request.setAttribute("allBr", allBr);
+				request.setAttribute("size", allBr.size());
 				request.getRequestDispatcher("return.jsp").forward(request, response);
 			}
 		} catch (ParseException ex) {

@@ -38,6 +38,7 @@ public class StudentsController extends HttpServlet {
 
             List<Students> allStudents = dao.getAllStudents();
             request.setAttribute("allStudents", allStudents);
+            request.setAttribute("size", allStudents.size());
             request.getRequestDispatcher("students.jsp").forward(request, response);
 
         } else if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {
@@ -74,6 +75,7 @@ public class StudentsController extends HttpServlet {
             }
             List<Students> allStudents = dao.getAllStudents();
             request.setAttribute("allStudents", allStudents);
+            request.setAttribute("size", allStudents.size());
             request.setAttribute("id", student.getId());
             request.getRequestDispatcher("students.jsp").forward(request, response);
 
@@ -101,6 +103,7 @@ public class StudentsController extends HttpServlet {
             }
             List<Students> allStudents = dao.getAllStudents();
             request.setAttribute("allStudents", allStudents);
+            request.setAttribute("size", allStudents.size());
             request.setAttribute("id", student.getId());
             request.getRequestDispatcher("students.jsp").forward(request, response);
 
@@ -115,6 +118,7 @@ public class StudentsController extends HttpServlet {
     		String searchKey = request.getParameter("searchbox");
     		List<Students> allStudents = studentsDao.Search(searchKey);
     		request.setAttribute("allStudents", allStudents);
+    		request.setAttribute("size", allStudents.size());
     		request.getRequestDispatcher("students.jsp").forward(request, response);
         } else {
 //            out.println(request.getParameter("action"));
@@ -122,6 +126,7 @@ public class StudentsController extends HttpServlet {
             List<Students> allStudents = dao.getAllStudents();
 
             request.setAttribute("allStudents", allStudents);
+            request.setAttribute("size", allStudents.size());
             request.getRequestDispatcher("students.jsp").forward(request, response);
         }
 	}
