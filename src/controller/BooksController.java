@@ -114,7 +114,7 @@ public class BooksController extends HttpServlet {
 			request.setAttribute("allBooks", allBooks);
 			request.getRequestDispatcher("books.jsp").forward(request, response);
 		} else {
-			System.out.println(request.getParameter("action"));
+			//System.out.println(request.getParameter("action"));
 			BooksDao dao = new BooksDao();
 			List<Books> allBooks = dao.getAllBooks();
 			dao.closeConnection();
