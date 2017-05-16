@@ -145,6 +145,32 @@ public class BooksDao {
 
         return book;
     }
+    
+    public Books getBookByName(String bookName) {
+
+        Books book = new Books();
+        String sql = "SELECT * from " + TABLE + " WHERE book_name = ?";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            ps.setString(1, bookName);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                book.setIsbn(rs.getString(1));
+                book.setBookname(rs.getString(2));
+                book.setAuthorname(rs.getString(3));
+                book.setCategory(rs.getString(4));
+                book.setSelfno(rs.getInt(5));
+            }
+
+        } catch (Exception e) {
+            System.out.println("EXCEPTION: " + e);
+        }
+
+        return book;
+    } 
 
     public boolean updateBooks(Books book) {
         String sql = "UPDATE " + TABLE

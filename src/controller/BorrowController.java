@@ -55,7 +55,15 @@ public class BorrowController extends HttpServlet {
                     out.println("找不到该生!!!");
                 } else {
                     if (book.getSelfno() == 0) {
-                        out.println("找不到该书!!!");
+                    	book = booksDao.getBookByName(bookId);
+                    	if(book.getSelfno() == 0){
+                    		out.println("找不到该书!!!");
+                    	}
+                    	request.setAttribute("book", book);
+                        request.setAttribute("student", student);
+
+                        request.getRequestDispatcher("confirmborrow.jsp").forward(request, response);
+                        
                     } else {
                         request.setAttribute("book", book);
                         request.setAttribute("student", student);
