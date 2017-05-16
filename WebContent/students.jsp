@@ -186,7 +186,7 @@
 				        <tr>
 				        <%--For displaying Previous link except for the 1st page --%>
 				        <c:if test="${currentPage != 1}">
-				        <td><a href="BooksController?page=${currentPage - 1}">Previous</a></td>
+				        <td><a href="StudentsController?page=${currentPage - 1}">Previous</a></td>
 				    </c:if>
 				 
 				            <c:forEach begin="1" end="${noOfPages}" var="i">
@@ -202,7 +202,7 @@
 				              
 				    <%--For displaying Next link --%>
 				    <c:if test="${currentPage lt noOfPages}">
-				        <td><a href="BooksController?page=${currentPage + 1}">Next</a></td>
+				        <td><a href="StudentsController?page=${currentPage + 1}">Next</a></td>
 				    </c:if>
 				        </tr>
 				    </table>

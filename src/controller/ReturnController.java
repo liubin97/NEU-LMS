@@ -114,33 +114,51 @@ public class ReturnController extends HttpServlet {
 			} else if (request.getParameter("searchbox") != null) {
 
 				//System.out.println(allBr.size());
-				BRComboDao brcDao = new BRComboDao();
-				if (request.getParameter("searchbox").length() == 0) {
-					request.setAttribute("errMsg", "²»ÄÜÎª¿Õ!!!");
-					request.getRequestDispatcher("books.jsp").forward(request, response);
-				}
+				
 				String searchKey = request.getParameter("searchbox");
 				
-				List<BRCombo> allBr = brcDao.search(searchKey);
-				brcDao.closeConnection();
-
-				request.setAttribute("allBr", allBr);
-				request.setAttribute("size", allBr.size());
-				request.getRequestDispatcher("return.jsp").forward(request, response);
-
+				
+				int page = 1;
+		        int recordsPerPage = 6;
+		        if(request.getParameter("page") != null)
+		        page = Integer.parseInt(request.getParameter("page"));
+		        BRComboDao dao = new BRComboDao();	
+		        List<BRCombo> someBrcs = dao.search(searchKey,page-1, recordsPerPage);
+		        int noOfRecords = dao.getNoOfRecords();
+		        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+		        request.setAttribute("allBr", someBrcs);
+		        request.setAttribute("noOfPages", noOfPages);
+		        request.setAttribute("currentPage", page);
+		        request.getRequestDispatcher("return.jsp").forward(request, response);
 			} else {
-
-				BRComboDao brcDao = new BRComboDao();
-				List<BRCombo> allBr = brcDao.getAllBrc();
-				brcDao.closeConnection();
-
-				request.setAttribute("allBr", allBr);
-				request.setAttribute("size", allBr.size());
-				request.getRequestDispatcher("return.jsp").forward(request, response);
+//
+//				BRComboDao brcDao = new BRComboDao();
+//				List<BRCombo> allBr = brcDao.getAllBrc();
+//				brcDao.closeConnection();
+//
+//				request.setAttribute("allBr", allBr);
+//				request.setAttribute("size", allBr.size());
+//				request.getRequestDispatcher("return.jsp").forward(request, response);
+				pagination(request,response);
 			}
 		} catch (ParseException ex) {
 			Logger.getLogger(ReturnController.class.getName()).log(Level.SEVERE, null, ex);
 		}
+	}
+	
+	private void pagination(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
+		int page = 1;
+        int recordsPerPage = 6;
+        if(request.getParameter("page") != null)
+        page = Integer.parseInt(request.getParameter("page"));
+        BRComboDao dao = new BRComboDao();	
+        List<BRCombo> someBrcs = dao.getSomeBrc(page-1, recordsPerPage);
+        int noOfRecords = dao.getNoOfRecords();
+        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+        request.setAttribute("allBr", someBrcs);
+        request.setAttribute("noOfPages", noOfPages);
+        request.setAttribute("currentPage", page);
+        request.getRequestDispatcher("return.jsp").forward(request, response);
 	}
 
 	/**
