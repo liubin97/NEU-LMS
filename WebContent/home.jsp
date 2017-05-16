@@ -7,52 +7,114 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <title>Home</title>
-    </head>
-
-    <body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--home页面的css-->
+    <link href="css/home.css" rel = "stylesheet">
+    <link href="css/indexstyle.css" rel="stylesheet">
+    <!--font-awesome-->
+    <link href="font-awesome/css/font-awesome.min.css"  rel="stylesheet"  type="text/css">
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- 包括所有已编译的插件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <title>Home</title>
+</head>
+<body>
     <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
-	<div class="main">
-        <%@include file="header.jsp" %>
-            <div id = "box">    
-                <h2>欢迎 !!!</h2>    
-                <article>
-                    <h3>活动设施:</h3>
-                    <p>
-                        NEU图书馆是一个设备齐全的多层建筑。它正在通过不同部门进行日常活动，例如位于图书馆大楼不同地点的采购部分，流通部分，处理部分和参考部分。图书馆行政部门进行行政活动。
-                        收购科一直在努力收集用户所需的各种文件。最近，它为这所大学的不同学院收集了大量不同类型的书籍。
-                        流通部分设在图书馆大楼的底层。这所大学的所有研究人员，学生和老师都可以根据流通部门的规定借阅所需                        的书籍，以便在图书馆或家庭之外读书。只有那些超过2份的书可以借给学生/教师/研究人员。
-                        处理部门正在做一个重要的工作。它使用AACR-2代码和D.D.C.编写目录并分类所有类型的文档。方案。它位于                         图书馆大楼的一楼。
-                        参考部分是另一个重要部分。它位于建筑物的一楼和二楼。教师，研究人员和学生可以阅读参考部分中的罕见
-
-                        文件。它还提供一张名义费用的影印设备。本节另一重要的服务是现在的意识服务。它经常将当前收到的文件清单发送给学院。论文73页
-
-
-                        ，“国内外期刊”和“15日报”均保留在大楼二楼。各类用户可以在这里阅读杂志，日报和论文。图书馆有一个网络中心。所
-                        有用户可能会使用网络中心的费用。
-                    </p>
-                    <h3>宗旨:</h3>
-                    <p>
-                        	图书馆的使命是提供全面的资源和服务，以支持大学的研究，教学需求。
-                    </p>
-                    <h3>视野:</h3>
-                    <p>
-                       	    建立世界一流的知识资源中心，为了教学和学习提供创新的服务和收藏。
-                    </p>
-                     <h3>开馆时间:</h3>
-                    <p>
-                      	  图书馆将于上午八时至晚上七时开放，周末正常开放在大学假期完全关闭。
-                    </p>
-                </article>
+        <!--顶部的导航栏-->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <div class="title">
+                        <a class="navbar-brand" id="logo" href="#">NEU&nbsp; <span >LBS</span></a>
+                    </div>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
+                    </ul>
+                </div>
             </div>
- 		</div>
+        </nav>
+        <!--中间的左边的控制栏-->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul id="main-nav" class="nav nav-tabs nav-stacked" style="border-bottom:none">
+                        <li class="active">
+                            <a href="home.jsp">
+                                <i class="	glyphicon glyphicon-home"></i>
+                                首页
+                            </a>
+                        </li>
+
+
+                            <%--<li>--%>
+                            <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
+                            <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
+                            <%--学生管理--%>
+                            <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
+                            <%--</a>--%>
+                            <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
+                            <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
+                            <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
+                            <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
+                            <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
+                            <%--</ul>--%>
+                            <%--</li>--%>
+                        <li>
+                            <a href="StudentsController" class="nav-header collapsed" >
+                                <i class="fa fa-user-circle-o fa-lg"></i>
+                                学生管理
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="BooksController">
+                                <i class="glyphicon glyphicon-credit-card"></i>
+                                书本管理
+                            </a>
+                        </li>
+                        <li>
+                            <a href="borrow.jsp">
+                                <i class="fa fa-book fa-lg"></i>
+                                <i class="fa fa-hand-lizard-o fa-lg"></i>
+                                学生借书
+                                <span class="label label-warning pull-right">${size}</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ReturnController">
+                                <i class="fa fa-hand-o-right fa-lg"></i>
+                                <i class="	glyphicon glyphicon-book"></i>
+                                学生还书
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-cog"></i>
+                                关于系统
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    主窗口
+                </div>
+            </div>
+        </div>
     </c:if>
 </body>
-<script >
-var d = document.getElementById("homeHeader");
-d.className += "active";
-</script>
 </html>

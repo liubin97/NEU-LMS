@@ -7,123 +7,184 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <title>New Book Page</title>
-    </head>
-    <body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--book页面的css-->
+    <link href="css/home.css" rel = "stylesheet">
+    <link href="css/indexstyle.css" rel="stylesheet">
+    <!--font-awesome-->
+    <link href="font-awesome/css/font-awesome.min.css"  rel="stylesheet"  type="text/css">
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <!-- 包括所有已编译的插件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <title>Home</title>
+</head>
+<body>
     <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
-        <%@include file="header.jsp" %>
-            <div id = "box" style = "text-align:center">
-            	 <c:if scope="request" test="${action == 'update'}" var="upd">
-                   <h2>修改书本信息</h2>
-                </c:if>
-                <c:if scope="request" test="${action != 'update'}" var="cre">
-                   <h2>添加新书</h2>
-                </c:if>
-                <form action="BooksController" class = "myForm">
-                        
-                    <div class = "formLeft">
-                            <br> 
-                            <label for="input1">书号</label><br>
-                            <label for="input2">书名</label><br>
-                            <label for="input3">作者</label><br>
-                            <label for="input4">类别</label><br>
-                            <label for="input5">数量</label><br>
-                         
+        <!--顶部的导航栏-->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <div class="title">
+                        <a class="navbar-brand" id="logo" href="#">NEU&nbsp; <span >LBS</span></a>
                     </div>
-                    
-                     <div class = "formRight">
-                            <br>  
-                            <input type="text" name="isbn" required
-                                               <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                               readonly value="<c:out value="${book.isbn}"/>"
-                                               <%}%>/><c:if test="${param.action == 'update'}"><font color="red">(你不能编辑这个字段!!!)</font></c:if>
-                                               <br>
-                            <input type="text" name="bookname" required
-                                            <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                            value="<c:out value="${book.bookname}"/>"
-                                            <%}%>/>
-                                            <br>
-
-                            <input type="text" name="authorname" required
-                                               <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                               value="<c:out value="${book.authorname}"/>"
-                                               <%}%>/>
-                                            <br>
-
-                            <input type="text" name="category"
-                                                <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                                value="<c:out value="${book.category}"/>"
-                                                <%}%>/>
-                                            <br>
-                            <input type="text" name="selfno" required placeholder="Put an Integer..."
-                                               <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                               value="<c:out value="${book.selfno}"/>"
-                                               <%}%>/>
-                                            <br>
-
-                    </div>
-
-                    <input type="submit" name="${param.action == 'update' ? 'update' : 'create'}" value="${param.action == 'update' ? 'Update' : 'Create'}"/>    
-
-                       <!--  <table>
-                           <tbody>
-                               <tr>
-                                   <td>ISBN: </td>
-                                   <td>
-                                       <input type="text" name="isbn" required
-                                              <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                              readonly value="<c:out value="${book.isbn}"/>"
-                                              <%}%>/>
-                                   </td>
-                                   <td>
-                                       <c:if test="${param.action == 'update'}"><font color="red">(你不能编辑这个字段!!!)</font></c:if>
-                                       </td>
-                              </tr>
-                                <tr>
-                                       <td>Book's Title:</td>
-                                       <td><input type="text" name="bookname" required
-                                           <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                           value="<c:out value="${book.bookname}"/>"
-                                           <%}%>/>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>Author's Name:</td>
-                                   <td><input type="text" name="authorname" required
-                                              <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                              value="<c:out value="${book.authorname}"/>"
-                                              <%}%>/>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>Category:</td>
-                                   <td> <input type="text" name="category"
-                                               <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                               value="<c:out value="${book.category}"/>"
-                                               <%}%>/>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td>Self NO.:</td>
-                                   <td><input type="text" name="selfno" required placeholder="Put an Integer..."
-                                              <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
-                                              value="<c:out value="${book.selfno}"/>"
-                                              <%}%>/>
-                                   </td>
-                               </tr>
-                               <tr>
-                                   <td></td>
-                                   <td>
-                                       <input type="submit" name="${param.action == 'update' ? 'update' : 'create'}" value="${param.action == 'update' ? 'Update' : 'Create'}"/>
-                                   </td>
-                               </tr>
-                           </tbody>
-                       </table> -->
-                </form>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
+                    </ul>
+                </div>
             </div>
+        </nav>
+        <!--中间的左边的控制栏-->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul id="main-nav" class="nav nav-tabs nav-stacked" style="border-bottom:none">
+                        <li class="active">
+                            <a href="home.jsp">
+                                <i class="	glyphicon glyphicon-home"></i>
+                                首页
+                            </a>
+                        </li>
+
+
+                            <%--<li>--%>
+                            <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
+                            <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
+                            <%--学生管理--%>
+                            <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
+                            <%--</a>--%>
+                            <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
+                            <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
+                            <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
+                            <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
+                            <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
+                            <%--</ul>--%>
+                            <%--</li>--%>
+                        <li>
+                            <a href="StudentsController" class="nav-header collapsed" >
+                                <i class="fa fa-user-circle-o fa-lg"></i>
+                                学生管理
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="BooksController">
+                                <i class="glyphicon glyphicon-credit-card"></i>
+                                书本管理
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="borrow.jsp">
+                                <i class="fa fa-book fa-lg"></i>
+                                <i class="fa fa-hand-lizard-o fa-lg"></i>
+                                学生借书
+                                <span class="label label-warning pull-right">5</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="ReturnController">
+                                <i class="fa fa-hand-o-right fa-lg"></i>
+                                <i class="	glyphicon glyphicon-book"></i>
+                                学生还书
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-cog"></i>
+                                关于系统
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                        <c:if scope="request" test="${action == 'update'}" var="upd">
+                            <h2 class="page-header">修改书本信息</h2>
+                        </c:if>
+                        <c:if scope="request" test="${action != 'update'}" var="cre">
+                            <h2 class="page-header">添加新书</h2>
+                        </c:if>
+
+                        <form class="form-horizontal" role="form" action="BooksController">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">书号</label>
+                                <div class="col-sm-2">
+                                    <input class="form-control" type="text"  name="isbn" required
+                                            <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
+                                           readonly value="<c:out value="${book.isbn}"/>"
+                                            <%}%>/><c:if test="${param.action == 'update'}"><font color="red">(你不能编辑这个字段!!!)</font></c:if>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">书名</label>
+                                <div class="col-sm-2">
+                                    <input class="form-control" type="text" name="bookname" required
+                                            <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
+                                           value="<c:out value="${book.bookname}"/>"
+                                            <%}%>/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">作者</label>
+                                <div class="col-sm-2">
+                                    <input class="form-control" type="text" name="authorname" required
+                                            <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
+                                           value="<c:out value="${book.authorname}"/>"
+                                            <%}%>/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">类别</label>
+                                <div class="col-sm-2">
+                                    <input class="form-control" type="text" name="category"
+                                            <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
+                                           value="<c:out value="${book.category}"/>"
+                                            <%}%>/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">数量</label>
+                                <div class="col-sm-2">
+                                    <input class="form-control" type="text" name="selfno" required placeholder="请输入是整数"
+                                            <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
+                                           value="<c:out value="${book.selfno}"/>"
+                                            <%}%>/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-default" type="submit" name="${param.action == 'update' ? 'update' : 'create'}" value="${param.action == 'update' ? 'Update' : 'Create'}"><span class="fa fa-check">提交</span></button>
+                                </div>
+                            </div>
+
+                        </form>
+
+
+
+
+                </div>
+            </div>
+        </div>
     </c:if>
 </body>
 </html>

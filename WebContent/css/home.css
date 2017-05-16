@@ -1,0 +1,91 @@
+/*导航栏*/
+.header {
+    height:35px;
+    padding :0px;
+    margin:0 auto;
+    width:923px;
+}
+#logo{
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+    text-shadow:2px 2px 4px #000000;
+    font-style:italic;
+}
+
+#logo span{
+    color: #5379fa !important;
+}
+.title a:hover{
+    color:white;
+}
+
+/*页面的左边部分*/
+#main-nav {
+    margin-left: 1px;
+    margin-top: 50px;
+}
+#main-nav.nav-tabs.nav-stacked > li > a {
+    padding: 10px 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #4A515B;
+    background: #E9E9E9;
+    border: 1px solid #D5D5D5;
+    border-radius: 4px;
+}
+#main-nav.nav-tabs.nav-stacked > li > a > span {
+    color: #4A515B;
+}
+#main-nav.nav-tabs.nav-stacked > li.active > a, #main-nav.nav-tabs.nav-stacked > li > a:hover {
+    color: #FFF;
+    background: #3C4049;
+    border-color: #2B2E33;
+}
+#main-nav.nav-tabs.nav-stacked > li.active > a, #main-nav.nav-tabs.nav-stacked > li > a:hover > span {
+    color: #FFF;
+}
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+}
+#main-nav.nav-tabs.nav-stacked > li {
+    margin-bottom: 10px;
+}
+/*定义二级菜单样式*/
+.secondmenu a {
+    font-size: 10px;
+    color: #4A515B;
+    text-align: center;
+}
+.navbar-static-top {
+    background-color: #212121;
+    margin-bottom: 5px;
+}
+.navbar-brand {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 50px;
+    color: #fff;
+}
+/*a标签颜色变化*/
+.change_a a:link{
+    color: #337ab7;
+}
+.change_a a:visited{
+    color: #337ab7;
+}
+.change_a a:hover{
+    color: #c9302c;
+}
