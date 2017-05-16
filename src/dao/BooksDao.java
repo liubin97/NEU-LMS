@@ -89,15 +89,17 @@ public class BooksDao {
 
         return books;
     }
-    public List<Books> search(String searchKey){
+    public List<Books> search(String searchKey , int pageNumber,int recordPerPage){
     	List<Books> books = new ArrayList<>();
         String sql = "SELECT * from " + TABLE + " where isbn like '%" + searchKey + "%' or book_name like '%" + searchKey +
         		"%' or author_name like '%" + searchKey + "%' or category like '%" + searchKey +
-        		"%' or self_no like '%"+ searchKey +"%' ";
+        		"%' or self_no like '%"+ searchKey +"%' LIMIT ?, ?";
 
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
+        	PreparedStatement ps = connection.prepareStatement(sql);
+        	ps.setInt(1,pageNumber*recordPerPage);
+        	ps.setInt(2, recordPerPage);
+        	ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
            
@@ -119,6 +121,48 @@ public class BooksDao {
     	
     }
     
+    public List<Books> getSomebook(int pageNumber,int recordPerPage) {
+   	 List<Books> books = new ArrayList<>();
+       String sql = "SELECT * from " + TABLE +" LIMIT ?, ?";
+       
+       try{
+       	PreparedStatement ps = connection.prepareStatement(sql);
+       	ps.setInt(1,pageNumber*recordPerPage);
+       	ps.setInt(2, recordPerPage);
+       	ResultSet rs = ps.executeQuery();
+       	 while (rs.next()) {
+       		 Books book = new Books();
+
+                book.setIsbn(rs.getString(1));
+                book.setBookname(rs.getString(2));
+                book.setAuthorname(rs.getString(3));
+                book.setCategory(rs.getString(4));
+                book.setSelfno(rs.getInt(5));
+
+                books.add(book);
+            }
+       	
+       }catch(Exception e){
+       	System.out.println("hell somebook:"); 	
+       	System.out.println("Exception" +e);
+       }
+       return books;
+   }
+    
+   public int getNoOfRecords(){
+   	String sql = "select count(1) from "+TABLE;
+   	int noOfRecords = 0;
+   	try{
+   		 Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs.next()) 
+           	 noOfRecords =  rs.getInt(1);
+   	}catch(Exception e){
+   		System.out.println("hell: number");
+   		System.out.println("Exception"+e);
+   	}
+   	return noOfRecords;
+   }
 
     public Books getBookById(String bookId) {
 

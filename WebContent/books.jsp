@@ -174,6 +174,34 @@
 
 
                    </table>
+                   
+                   
+				    <%--For displaying Page numbers. 
+				    The when condition does not display a link for the current page--%>
+				   <table border="1" style="border: none;">
+				        <tr>
+				        <c:if test="${currentPage != 1}">
+				        <td><a href="BooksController?page=${currentPage - 1}">Previous</a></td>
+				    </c:if>
+				 
+				            <c:forEach begin="1" end="${noOfPages}" var="i">
+				                <c:choose>
+				                    <c:when test="${currentPage eq i}">
+				                        <td>${i}</td>
+				                    </c:when>
+				                    <c:otherwise>
+				                        <td><a href="BooksController?page=${i}">${i}</a></td>
+				                    </c:otherwise>
+				                </c:choose>
+				            </c:forEach>
+				              
+				    <%--For displaying Next link --%>
+				    <c:if test="${currentPage lt noOfPages}">
+				        <td><a href="BooksController?page=${currentPage + 1}">Next</a></td>
+				    </c:if>
+				        </tr>
+				    </table>
+				   
                    </div>
                     </div>
                </div>

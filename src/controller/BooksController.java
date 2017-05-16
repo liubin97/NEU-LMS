@@ -107,26 +107,47 @@ public class BooksController extends HttpServlet {
 
 		} else if (request.getParameter("searchbox") != null) {
 			// System.out.println("on");
-			BooksDao booksDao = new BooksDao();
-			if (request.getParameter("searchbox").length() == 0) {
-				request.setAttribute("errMsg", "²»ÄÜÎª¿Õ!!!");
-				request.getRequestDispatcher("books.jsp").forward(request, response);
-			}
-			String searchKey = request.getParameter("searchbox");
-			List<Books> allBooks = booksDao.search(searchKey);
-			booksDao.closeConnection();
-			request.setAttribute("allBooks", allBooks);
-			request.setAttribute("size", allBooks.size());
-			request.getRequestDispatcher("books.jsp").forward(request, response);
+			
+			String searchKey = request.getParameter("searchbox");	
+			int page = 1;
+	        int recordsPerPage = 6;
+	        if(request.getParameter("page") != null)
+	        page = Integer.parseInt(request.getParameter("page"));
+	        BooksDao dao = new BooksDao();	
+	        List<Books> someBooks = dao.search(searchKey , page-1, recordsPerPage);
+	        int noOfRecords = dao.getNoOfRecords();
+	        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+	        request.setAttribute("allBooks", someBooks);
+	        request.setAttribute("noOfPages", noOfPages);
+	        request.setAttribute("currentPage", page);
+	        request.getRequestDispatcher("books.jsp").forward(request, response);
+			
 		} else {
 			//System.out.println(request.getParameter("action"));
-			BooksDao dao = new BooksDao();
-			List<Books> allBooks = dao.getAllBooks();
-			dao.closeConnection();
-			request.setAttribute("allBooks", allBooks);
-			request.setAttribute("size", allBooks.size());
-			request.getRequestDispatcher("books.jsp").forward(request, response);
+//			BooksDao dao = new BooksDao();
+//			List<Books> allBooks = dao.getAllBooks();
+//			dao.closeConnection();
+//			request.setAttribute("allBooks", allBooks);
+//			request.setAttribute("size", allBooks.size());
+//			request.getRequestDispatcher("books.jsp").forward(request, response);
+			pagination(request,response);
+			
 		}
+	}
+	
+	private void pagination(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
+		int page = 1;
+        int recordsPerPage = 6;
+        if(request.getParameter("page") != null)
+        page = Integer.parseInt(request.getParameter("page"));
+        BooksDao dao = new BooksDao();	
+        List<Books> someBooks = dao.getSomebook(page-1, recordsPerPage);
+        int noOfRecords = dao.getNoOfRecords();
+        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+        request.setAttribute("allBooks", someBooks);
+        request.setAttribute("noOfPages", noOfPages);
+        request.setAttribute("currentPage", page);
+        request.getRequestDispatcher("books.jsp").forward(request, response);
 	}
 
 	/**

@@ -147,7 +147,6 @@
                             <th>电话</th>
                             <th>地址</th>
                             <th>性别</th>
-                            <th>可借书？</th>
                             <th>学院</th>
                             <th colspan="2">Action</th>
                         </tr>
@@ -162,8 +161,7 @@
                                 <td><c:out value="${student.email}"/></td>
                                 <td><c:out value="${student.phoneNo}"/></td>
                                 <td><c:out value="${student.address}"/></td>
-                                <td><c:out value="${student.gender == 1 ? '男' : '女'}"/></td>
-                                <td><c:out value="${student.ms == 1 ? '可借' : '不可借'}"/></td>
+                                <td><c:out value="${student.gender == 1 ? '男' : '女'}"/></td>                             
                                 <td><c:out value="${student.dept}"/></td>
                                 <td  ><a href="StudentsController?action=update&id=${student.id}" title="更新"><span class="fa fa-refresh fa-spin"></span></a></td>
                                 <td ><a href="StudentsController?action=delete&id=${student.id}" title="删除"><sapn class="fa fa-close"></sapn></a></td>
@@ -181,6 +179,34 @@
 
 
                 </table>
+                
+				     <%--For displaying Page numbers. 
+				    The when condition does not display a link for the current page--%>
+				   <table border="1" style="border: none;">
+				        <tr>
+				        <%--For displaying Previous link except for the 1st page --%>
+				        <c:if test="${currentPage != 1}">
+				        <td><a href="BooksController?page=${currentPage - 1}">Previous</a></td>
+				    </c:if>
+				 
+				            <c:forEach begin="1" end="${noOfPages}" var="i">
+				                <c:choose>
+				                    <c:when test="${currentPage eq i}">
+				                        <td>${i}</td>
+				                    </c:when>
+				                    <c:otherwise>
+				                        <td><a href="BooksController?page=${i}">${i}</a></td>
+				                    </c:otherwise>
+				                </c:choose>
+				            </c:forEach>
+				              
+				    <%--For displaying Next link --%>
+				    <c:if test="${currentPage lt noOfPages}">
+				        <td><a href="BooksController?page=${currentPage + 1}">Next</a></td>
+				    </c:if>
+				        </tr>
+				    </table>
+                
 
             </div>
         </div>

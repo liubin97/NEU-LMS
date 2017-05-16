@@ -81,7 +81,7 @@ public class StudentsController extends HttpServlet {
 
         } else if (request.getParameter("update") != null) {
 
-//            out.println("update");
+ //           System.out.println("update");
             Students student = new Students();
             StudentsDao dao = new StudentsDao();
 
@@ -96,7 +96,7 @@ public class StudentsController extends HttpServlet {
             student.setMs(Integer.valueOf(request.getParameter("ms")));
             student.setDept(request.getParameter("dept"));
 
-//            out.println(student.getId() + " " + student.getMs()+ " " + student.getDept());
+//            System.out.println(student.getId() + " " + student.getMs()+ " " + student.getDept());
             boolean flag = dao.updateStudent(student);
             if (flag) {
                 request.setAttribute("flag", "update");
@@ -109,27 +109,59 @@ public class StudentsController extends HttpServlet {
 
         } else if(request.getParameter("searchbox") != null){ 
  //       	System.out.println("on");
-        	StudentsDao studentsDao = new StudentsDao();	
-    		if(request.getParameter("searchbox").length() == 0){
-    			request.setAttribute("errMsg", "不能为空!!!");
-    			request.getRequestDispatcher("students.jsp").forward(request, response);
-    		}
-    		
-    		String searchKey = request.getParameter("searchbox");
-    		List<Students> allStudents = studentsDao.Search(searchKey);
-    		request.setAttribute("allStudents", allStudents);
-    		request.setAttribute("size", allStudents.size());
-    		request.getRequestDispatcher("students.jsp").forward(request, response);
-        } else {
-//            out.println(request.getParameter("action"));
+//        	StudentsDao studentsDao = new StudentsDao();	
+//    		if(request.getParameter("searchbox").length() == 0){
+//    			request.setAttribute("errMsg", "不能为空!!!");
+//    			request.getRequestDispatcher("students.jsp").forward(request, response);
+//    		}
+//    		
+//    		String searchKey = request.getParameter("searchbox");
+//    		List<Students> allStudents = studentsDao.Search(searchKey);
+//    		request.setAttribute("allStudents", allStudents);
+//    		request.setAttribute("size", allStudents.size());
+//    		request.getRequestDispatcher("students.jsp").forward(request, response);
+        	int page = 1;
+            int recordsPerPage = 6;
+            if(request.getParameter("page") != null)
+            	page = Integer.parseInt(request.getParameter("page"));
             StudentsDao dao = new StudentsDao();
-            List<Students> allStudents = dao.getAllStudents();
-
-            request.setAttribute("allStudents", allStudents);
-            request.setAttribute("size", allStudents.size());
+            String searchKey = request.getParameter("searchbox");
+            List<Students> someStudents = dao.Search(searchKey, page-1, recordsPerPage);
+            int noOfRecords = dao.getNoOfRecords();
+            int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+            request.setAttribute("allStudents", someStudents);
+            request.setAttribute("noOfPages", noOfPages);
+            request.setAttribute("currentPage", page);
             request.getRequestDispatcher("students.jsp").forward(request, response);
+        
+        } else {
+//            System.out.println(request.getParameter("action"));
+//            StudentsDao dao = new StudentsDao();
+//            List<Students> allStudents = dao.getAllStudents();
+//
+//            request.setAttribute("allStudents", allStudents);
+//            request.setAttribute("size", allStudents.size());
+////            System.out.println(allStudents.size());
+//            request.getRequestDispatcher("students.jsp").forward(request, response);
+        	pagination(request,response); 	
         }
 	}
+	
+	private void pagination(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException{
+		int page = 1;
+        int recordsPerPage = 6;
+        if(request.getParameter("page") != null)
+        	page = Integer.parseInt(request.getParameter("page"));
+        StudentsDao dao = new StudentsDao();	
+        List<Students> someStudents = dao.getSomeStudent(page-1, recordsPerPage);
+        int noOfRecords = dao.getNoOfRecords();
+        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+        request.setAttribute("allStudents", someStudents);
+        request.setAttribute("noOfPages", noOfPages);
+        request.setAttribute("currentPage", page);
+        request.getRequestDispatcher("students.jsp").forward(request, response);
+	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
