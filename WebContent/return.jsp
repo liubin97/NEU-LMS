@@ -187,28 +187,26 @@
                             </table>
                             <%--For displaying Page numbers. 
 				    The when condition does not display a link for the current page--%>
-				   <table border="1" style="border: none;">
-				        <tr>
-				        <c:if test="${currentPage != 1}">
-				        <td><a href="ReturnController?page=${currentPage - 1}">Previous</a></td>
+				   <ul class=" pager">
+                  
+                        <c:if test="${currentPage != 1}">
+				         <li><a href="ReturnController?page=${currentPage - 1}">&laquo;</a></li>
 				    	</c:if>
-				            <c:forEach begin="1" end="${noOfPages}" var="i">
+                        	<c:forEach begin="1" end="${noOfPages}" var="i">
 				                <c:choose>
 				                    <c:when test="${currentPage eq i}">
-				                        <td>${i}</td>
+				                       <li><a href="#" class = "active">${i}</a></li> 
 				                    </c:when>
 				                    <c:otherwise>
-				                        <td><a href="ReturnController?page=${i}">${i}</a></td>
+				                    	<li><a href="ReturnController?page=${i}">${i}</a></li>
+				    
 				                    </c:otherwise>
 				                </c:choose>
 				            </c:forEach>
-				            <%--For displaying Next link --%>
-				    <c:if test="${currentPage lt noOfPages}">
-				        <td><a href="ReturnController?page=${currentPage + 1}">Next</a></td>
-				    </c:if>
-				        </tr>
-				    </table>
-                            
+                            <c:if test="${currentPage lt noOfPages}">
+				        		<li><a href="ReturnController?page=${currentPage + 1}">&raquo;</a></li>
+				    		</c:if>
+                        </ul>
                         </div>
                     </div>
                 </div>

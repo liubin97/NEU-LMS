@@ -1,7 +1,4 @@
-<%-- 
-    Document   : books
-    Author     : GJC
---%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,11 +8,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- 引入 Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!--book页面的css-->
     <link href="css/home.css" rel = "stylesheet">
     <link href="css/indexstyle.css" rel="stylesheet">
+
     <!--font-awesome-->
     <link href="font-awesome/css/font-awesome.min.css"  rel="stylesheet"  type="text/css">
     <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
@@ -23,6 +22,7 @@
     <!-- 包括所有已编译的插件 -->
     <script src="js/bootstrap.min.js"></script>
     <title>Book</title>
+
 </head>
 <body>
    <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
@@ -57,19 +57,6 @@
                            </a>
                        </li>
 
-                       <%--<li>--%>
-                           <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
-                               <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
-                               <%--学生管理--%>
-                               <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
-                           <%--</a>--%>
-                           <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
-                               <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
-                               <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
-                               <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
-                               <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
-                           <%--</ul>--%>
-                       <%--</li>--%>
                        <li>
                            <a href="StudentsController" class="nav-header collapsed" >
                                <i class="fa fa-user-circle-o fa-lg"></i>
@@ -116,6 +103,7 @@
                    <h2 class="page-header">书本列表</h2>
                        <div class="table-responsive">
 
+                           <div class="col-md-11">
                                 <form class="form-inline" role="form" action="">
                                     <div class="form-group">
                                         <label class="sr-only" for="name">名称</label>
@@ -123,6 +111,10 @@
                                     </div>
                                     <button type="submit" name ="searchbutton" class="btn btn-default" value="Search"><span class="glyphicon glyphicon-search">搜索</span></button>
                                 </form>
+                           </div>
+                           <div class="col-md-1 pull-right" >
+                               <button class="btn btn-default">   <a href="newbook.jsp" > <span class="glyphicon glyphicon-plus">增加</span></a></button>
+                           </div>
 
                        </div>
 
@@ -135,6 +127,8 @@
                            <c:if scope="request" test="${flag == 'update'}" var="upd">
                                <font color="green"><b>*** Update Successful!!</b></font><br/><br/>
                            </c:if>
+
+                   <div class="table_marign">
                         <table class="table table-hover">
                            <thead>
                            <tr>
@@ -148,59 +142,47 @@
                            </thead>
 
 
-                        <tbody>
-                               <c:forEach items="${allBooks}" var="book">
+                            <tbody>
+                                   <c:forEach items="${allBooks}" var="book">
 
-                                   <tr <c:if test="${isbn == book.isbn}"> </c:if>>
-                                       <td><c:out value="${book.isbn}"/></td>
-                                       <td><c:out value="${book.bookname}"/></td>
-                                       <td><c:out value="${book.authorname}"/></td>
-                                       <td><c:out value="${book.category}"/></td>
-                                       <td><c:out value="${book.selfno}"/></td>
-                                       <td id="change"><a href="BooksController?action=update&isbn=${book.isbn}" title="更新"><span class="fa fa-refresh "></span></a></td>
-                                       <td id="change"><a href="BooksController?action=delete&isbn=${book.isbn}" title="删除"><sapn class="fa fa-close"></sapn></a></td>
-                                   </tr>
+                                       <tr <c:if test="${isbn == book.isbn}"> </c:if>>
+                                           <td><c:out value="${book.isbn}"/></td>
+                                           <td><c:out value="${book.bookname}"/></td>
+                                           <td><c:out value="${book.authorname}"/></td>
+                                           <td><c:out value="${book.category}"/></td>
+                                           <td><c:out value="${book.selfno}"/></td>
+                                           <td id="change"><a href="BooksController?action=update&isbn=${book.isbn}" title="更新"><span class="fa fa-refresh fa-spin"></span></a></td>
+                                           <td id="change"><a href="BooksController?action=delete&isbn=${book.isbn}" title="删除"><sapn class="fa fa-close"></sapn></a></td>
+                                       </tr>
 
-                               </c:forEach>
-                        </tbody>
-
-                        <tfoot>
-                               <tr>
-                                   <td > <a href="newbook.jsp" > <span class="glyphicon glyphicon-plus"></span></a>
-                                   </td>
-                               </tr>
-
-                        </tfoot>
-
-
-                   </table>
-                    
-				 
-				    <%--For displaying Page numbers. 
-				    The when condition does not display a link for the current page--%>
-				   <table border="1" style="border: none;">
-				        <tr>
-				        <c:if test="${currentPage != 1}">
-				        <td><a href="BooksController?page=${currentPage - 1}">Previous</a></td>
+                                   </c:forEach>
+                            </tbody>
+                        </table>
+                        
+                        <ul class=" pager">
+                  
+                        <c:if test="${currentPage != 1}">
+				         <li><a href="BooksController?page=${currentPage - 1}">&laquo;</a></li>
 				    	</c:if>
-				            <c:forEach begin="1" end="${noOfPages}" var="i">
+                        	<c:forEach begin="1" end="${noOfPages}" var="i">
 				                <c:choose>
 				                    <c:when test="${currentPage eq i}">
-				                        <td>${i}</td>
+				                       <li><a href="#" class = "active">${i}</a></li> 
 				                    </c:when>
 				                    <c:otherwise>
-				                        <td><a href="BooksController?page=${i}"> ${i} </a></td>
+				                    	<li><a href="BooksController?page=${i}">${i}</a></li>
+				    
 				                    </c:otherwise>
 				                </c:choose>
 				            </c:forEach>
-				            <%--For displaying Next link --%>
-				    <c:if test="${currentPage lt noOfPages}">
-				        <td><a href="BooksController?page=${currentPage + 1}">Next</a></td>
-				    </c:if>
-				        </tr>
-				    </table>
-				     
-				    
+                            <c:if test="${currentPage lt noOfPages}">
+				        		<li><a href="BooksController?page=${currentPage + 1}">&raquo;</a></li>
+				    		</c:if>
+                        </ul>
+                   </div>
+
+
+
                    </div>
                     </div>
                </div>
