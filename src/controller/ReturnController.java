@@ -124,8 +124,10 @@ public class ReturnController extends HttpServlet {
 		        page = Integer.parseInt(request.getParameter("page"));
 		        BRComboDao dao = new BRComboDao();	
 		        List<BRCombo> someBrcs = dao.search(searchKey,page-1, recordsPerPage);
-		        int noOfRecords = dao.getNoOfRecords();
+		        int noOfRecords = dao.getNoOfSearchRecords(searchKey);
+		        
 		        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+		       // System.out.println(noOfPages);
 		        request.setAttribute("allBr", someBrcs);
 		        request.setAttribute("noOfPages", noOfPages);
 		        request.setAttribute("currentPage", page);

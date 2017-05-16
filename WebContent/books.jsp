@@ -104,7 +104,7 @@
                        <div class="table-responsive">
 
                            <div class="col-md-11">
-                                <form class="form-inline" role="form" action="">
+                                <form class="form-inline" role="form" action="BooksController">
                                     <div class="form-group">
                                         <label class="sr-only" for="name">名称</label>
                                         <input type="text" name="searchbox" class="form-control" id="name" placeholder="请输入搜索内容">

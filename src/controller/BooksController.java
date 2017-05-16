@@ -115,7 +115,7 @@ public class BooksController extends HttpServlet {
 	        page = Integer.parseInt(request.getParameter("page"));
 	        BooksDao dao = new BooksDao();	
 	        List<Books> someBooks = dao.search(searchKey , page-1, recordsPerPage);
-	        int noOfRecords = dao.getNoOfRecords();
+	        int noOfRecords = dao.getNoOfSearchRecords(searchKey);
 	        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
 	        request.setAttribute("allBooks", someBooks);
 	        request.setAttribute("noOfPages", noOfPages);

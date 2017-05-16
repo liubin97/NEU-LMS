@@ -209,6 +209,24 @@ public class StudentsDao {
     	}
     	return noOfRecords;
     }
+    
+    public int getNoOfSearchRecords(String searchKey){
+	   	String sql = "select count(1) from "+TABLE+ " WHERE Id like '%" + searchKey + "%' or First_Name like '%" + searchKey + 
+        		"%' or Last_Name like '%" + searchKey + "%' or Email like '%" + searchKey + 
+        		"%' or Phone_No like '%" + searchKey + "%' or Address like '%" + searchKey + 
+        		"%' or Dept like '%" + searchKey + "%'";
+	   	int noOfRecords = 0;
+	   	try{
+	   		 Statement statement = connection.createStatement();
+	            ResultSet rs = statement.executeQuery(sql);
+	            if(rs.next()) 
+	           	 noOfRecords =  rs.getInt(1);
+	   	}catch(Exception e){
+	   		System.out.println("hell: number");
+	   		System.out.println("Exception"+e);
+	   	}
+	   	return noOfRecords;
+}
 
     public boolean updateStudent(Students student) {
         String sql = "UPDATE " + TABLE

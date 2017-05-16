@@ -127,8 +127,10 @@ public class StudentsController extends HttpServlet {
             StudentsDao dao = new StudentsDao();
             String searchKey = request.getParameter("searchbox");
             List<Students> someStudents = dao.Search(searchKey, page-1, recordsPerPage);
-            int noOfRecords = dao.getNoOfRecords();
+            int noOfRecords = dao.getNoOfSearchRecords(searchKey);
+           
             int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+            System.out.println(noOfRecords);
             request.setAttribute("allStudents", someStudents);
             request.setAttribute("noOfPages", noOfPages);
             request.setAttribute("currentPage", page);

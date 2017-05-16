@@ -163,6 +163,23 @@ public class BooksDao {
    	}
    	return noOfRecords;
    }
+   
+   public int getNoOfSearchRecords(String searchKey){
+	   	String sql = "select count(1) from "+TABLE+ " where isbn like '%" + searchKey + "%' or book_name like '%" + searchKey +
+        		"%' or author_name like '%" + searchKey + "%' or category like '%" + searchKey +
+        		"%' or self_no like '%"+ searchKey +"%' ";
+	   	int noOfRecords = 0;
+	   	try{
+	   		 Statement statement = connection.createStatement();
+	            ResultSet rs = statement.executeQuery(sql);
+	            if(rs.next()) 
+	           	 noOfRecords =  rs.getInt(1);
+	   	}catch(Exception e){
+	   		System.out.println("hell: number");
+	   		System.out.println("Exception"+e);
+	   	}
+	   	return noOfRecords;
+}
 
     public Books getBookById(String bookId) {
 
