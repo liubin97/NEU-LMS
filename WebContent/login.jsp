@@ -1,7 +1,4 @@
-<%--
-    Document   : index
-    Author     : GJC
---%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -45,7 +42,7 @@
 <!-- /container -->
 
 <c:if test="${not empty errMsg}">
-<script type="text/javascript">alert("${errMsg}")</script>
+    <div class="error"><b>Warming: </b> <c:out value="${errMsg}"/><b></b></div>
 </c:if>
 
 </body>

@@ -49,7 +49,7 @@
          <div class="row">
              <div class="col-sm-3 col-md-2 sidebar">
                  <ul id="main-nav" class="nav nav-tabs nav-stacked" style="border-bottom:none">
-                     <li class="active">
+                     <li >
                          <a href="home.jsp">
                              <i class="	glyphicon glyphicon-home"></i>
                              首页
@@ -70,7 +70,7 @@
                          <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
                          <%--</ul>--%>
                          <%--</li>--%>
-                     <li>
+                     <li class="active">
                          <a href="StudentsController" class="nav-header collapsed">
                              <i class="fa fa-user-circle-o fa-lg"></i>
                              学生管理
@@ -102,7 +102,7 @@
                          </a>
                      </li>
                      <li>
-                         <a href="#">
+                         <a href="about.jsp">
                              <i class="glyphicon glyphicon-cog"></i>
                              关于系统
                          </a>
@@ -182,16 +182,16 @@
                      <div class="form-group">
                          <label class="col-sm-2 control-label">性别</label>
                          <div class="col-sm-2">
-                             <input class="form-control" type="radio" name="gender" value="1" <c:if test="${action == update and student.gender == 1 or empty action}">checked</c:if>/>男
-                             <input type="radio" name="gender" value="2" <c:if test="${action == update and student.gender == 2}">checked</c:if>/>女
+                             <input type="radio" name="gender" value="1" <c:if test="${action == update and student.gender == 1 or empty action}"></c:if>/>男
+                             <input type="radio" name="gender" value="2" <c:if test="${action == update and student.gender == 2}"></c:if>/>女
                          </div>
                      </div>
 
                      <div class="form-group">
                          <label class="col-sm-2 control-label">婚否</label>
                          <div class="col-sm-2">
-                             <input class="form-control"  type="radio" name="ms" value="1" <c:if test="${action == update and student.ms == 1 or empty action}">checked</c:if>/> 结婚
-                             <input type="radio" name="ms" value="2" <c:if test="${action == update and student.ms == 2}">checked</c:if>/> 单身
+                             <input type="radio" name="ms" value="1" <c:if test="${action == update and student.ms == 1 or empty action}"></c:if>/> 结婚
+                             <input type="radio" name="ms" value="2" <c:if test="${action == update and student.ms == 2}"></c:if>/> 单身
                          </div>
                      </div>
 

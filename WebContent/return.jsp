@@ -1,4 +1,3 @@
-
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.time.Instant"%>
@@ -53,7 +52,7 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul id="main-nav" class="nav nav-tabs nav-stacked" style="border-bottom:none">
-                        <li class="active">
+                        <li >
                             <a href="home.jsp">
                                 <i class="	glyphicon glyphicon-home"></i>
                                 首页
@@ -97,7 +96,7 @@
                             </a>
                         </li>
 
-                        <li>
+                        <li class="active">
                             <a href="ReturnController">
                                 <i class="fa fa-hand-o-right fa-lg"></i>
                                 <i class="	glyphicon glyphicon-book"></i>
@@ -106,7 +105,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="about.jsp">
                                 <i class="glyphicon glyphicon-cog"></i>
                                 关于系统
                             </a>
@@ -142,7 +141,6 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-
                                 <tbody>
                                 <c:forEach var="br" items="${allBr}">
                                     <tr>
@@ -187,16 +185,13 @@
                                 </tbody>
 
                             </table>
-                            
-                             <%--For displaying Page numbers. 
+                            <%--For displaying Page numbers. 
 				    The when condition does not display a link for the current page--%>
 				   <table border="1" style="border: none;">
 				        <tr>
-				        <%--For displaying Previous link except for the 1st page --%>
 				        <c:if test="${currentPage != 1}">
 				        <td><a href="ReturnController?page=${currentPage - 1}">Previous</a></td>
-				    </c:if>
-				 
+				    	</c:if>
 				            <c:forEach begin="1" end="${noOfPages}" var="i">
 				                <c:choose>
 				                    <c:when test="${currentPage eq i}">
@@ -207,13 +202,12 @@
 				                    </c:otherwise>
 				                </c:choose>
 				            </c:forEach>
-				              
-				    <%--For displaying Next link --%>
+				            <%--For displaying Next link --%>
 				    <c:if test="${currentPage lt noOfPages}">
 				        <td><a href="ReturnController?page=${currentPage + 1}">Next</a></td>
 				    </c:if>
 				        </tr>
-				        </table>
+				    </table>
                             
                         </div>
                     </div>

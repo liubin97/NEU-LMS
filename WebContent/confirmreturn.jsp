@@ -1,7 +1,3 @@
-<%-- 
-    Document   : confirmreturn
-    Author     : GJC
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +7,6 @@
         <title>return confirm</title>
     </head>
     <body>
-         <%@include file="header.jsp" %>
          <h1>借书成功</h1>
     </body>
 </html>

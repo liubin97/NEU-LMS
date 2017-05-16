@@ -102,7 +102,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="about.jsp">
                                 <i class="glyphicon glyphicon-cog"></i>
                                 关于系统
                             </a>
@@ -111,7 +111,56 @@
 
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    主窗口
+
+                            <div class="col-md-12 column">
+                                <div class="carousel slide" id="carousel-778893">
+                                    <ol class="carousel-indicators">
+                                        <li class="active" data-slide-to="0" data-target="#carousel-778893">
+                                        </li>
+                                        <li data-slide-to="1" data-target="#carousel-778893">
+                                        </li>
+                                        <li data-slide-to="2" data-target="#carousel-778893">
+                                        </li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <img alt="" src="images/background.jpg" />
+                                            <div class="carousel-caption">
+                                                <h4>
+                                                    First Thumbnail label
+                                                </h4>
+                                                <p>
+                                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img alt="" src="images/background1.jpg" />
+                                            <div class="carousel-caption">
+                                                <h4>
+                                                    Second Thumbnail label
+                                                </h4>
+                                                <p>
+                                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <img alt="" src="images/background4.jpg" />
+                                            <div class="carousel-caption">
+                                                <h4>
+                                                    Third Thumbnail label
+                                                </h4>
+                                                <p>
+                                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div> <a class="left carousel-control" href="#carousel-778893" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-778893" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                                </div>
+                            </div>
+
+
                 </div>
             </div>
         </div>

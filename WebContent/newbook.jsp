@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul id="main-nav" class="nav nav-tabs nav-stacked" style="border-bottom:none">
-                        <li class="active">
+                        <li >
                             <a href="home.jsp">
                                 <i class="	glyphicon glyphicon-home"></i>
                                 首页
@@ -78,7 +78,7 @@
                         </li>
 
 
-                        <li>
+                        <li class="active">
                             <a href="BooksController">
                                 <i class="glyphicon glyphicon-credit-card"></i>
                                 书本管理
@@ -103,7 +103,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="about.jsp">
                                 <i class="glyphicon glyphicon-cog"></i>
                                 关于系统
                             </a>

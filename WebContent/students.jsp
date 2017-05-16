@@ -38,6 +38,7 @@
                         <a class="navbar-brand" id="logo" href="#">NEU&nbsp; <span >LBS</span></a>
                     </div>
                 </div>
+
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
@@ -107,7 +108,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="about.jsp">
                                 <i class="glyphicon glyphicon-cog"></i>
                                 关于系统
                             </a>
@@ -117,8 +118,10 @@
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h2 class="page-header">学生列表</h2>
+
                     <div class="table-responsive">
 
+                        <div class="col-md-11">
                         <form class="form-inline" role="form" action="">
                             <div class="form-group">
                                 <label class="sr-only" for="name">名称</label>
@@ -126,6 +129,11 @@
                             </div>
                             <button type="submit" name ="searchbutton" class="btn btn-default" value="Search"><span class="glyphicon glyphicon-search">搜索</span></button>
                         </form>
+                       </div>
+
+                        <div class="col-md-1 pull-right" >
+                            <button class="btn btn-default">  <a href="newstudent.jsp" > <span class="fa fa-plus">增加</span></a> </button>
+                        </div>
 
                     </div>
                         <c:if scope="request" test="${exists == 'yes'}" var="reg">
@@ -137,7 +145,7 @@
                         <c:if scope="request" test="${flag == 'update'}" var="upd">
                             <font color="green"><b>*** 更新成功!!</b></font><br/><br/>
                         </c:if>
-                    <table class="table table-striped">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>学号</th>
@@ -161,18 +169,13 @@
                                 <td><c:out value="${student.email}"/></td>
                                 <td><c:out value="${student.phoneNo}"/></td>
                                 <td><c:out value="${student.address}"/></td>
-                                <td><c:out value="${student.gender == 1 ? '男' : '女'}"/></td>                             
+                                <td><c:out value="${student.gender == 1 ? '男' : '女'}"/></td>
                                 <td><c:out value="${student.dept}"/></td>
                                 <td  ><a href="StudentsController?action=update&id=${student.id}" title="更新"><span class="fa fa-refresh fa-spin"></span></a></td>
                                 <td ><a href="StudentsController?action=delete&id=${student.id}" title="删除"><sapn class="fa fa-close"></sapn></a></td>
                             </tr>
                         </c:forEach>
                         </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <td> <a href="newstudent.jsp" > <span class="glyphicon glyphicon-plus"></a></td> </tr></tfoot>
-
                 </div>
             </div>
         </div>
@@ -180,33 +183,27 @@
 
                 </table>
                 
-				     <%--For displaying Page numbers. 
-				    The when condition does not display a link for the current page--%>
-				   <table border="1" style="border: none;">
-				        <tr>
-				        <%--For displaying Previous link except for the 1st page --%>
-				        <c:if test="${currentPage != 1}">
-				        <td><a href="StudentsController?page=${currentPage - 1}">Previous</a></td>
-				    </c:if>
-				 
-				            <c:forEach begin="1" end="${noOfPages}" var="i">
+               <ul class=" pager">
+                  
+                        <c:if test="${currentPage != 1}">
+				         <li><a href="StudentsController?page=${currentPage - 1}">&laquo;</a></li>
+				    	</c:if>
+                        	<c:forEach begin="1" end="${noOfPages}" var="i">
 				                <c:choose>
 				                    <c:when test="${currentPage eq i}">
-				                        <td>${i}</td>
+				                       <li><a href="#" class = "active">${i}</a></li> 
 				                    </c:when>
 				                    <c:otherwise>
-				                        <td><a href="BooksController?page=${i}">${i}</a></td>
+				                    	<li><a href="StudentsController?page=${i}">${i}</a></li>
+				    
 				                    </c:otherwise>
 				                </c:choose>
 				            </c:forEach>
-				              
-				    <%--For displaying Next link --%>
-				    <c:if test="${currentPage lt noOfPages}">
-				        <td><a href="StudentsController?page=${currentPage + 1}">Next</a></td>
-				    </c:if>
-				        </tr>
-				    </table>
-                
+                            <c:if test="${currentPage lt noOfPages}">
+				        		<li><a href="StudentsController?page=${currentPage + 1}">&raquo;</a></li>
+				    		</c:if>
+                        </ul>
+               
 
             </div>
         </div>
