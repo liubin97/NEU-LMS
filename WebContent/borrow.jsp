@@ -134,7 +134,9 @@
                                     </div>
                                 </div>
                             </form>
-                            <script type="text/javascript">alert("${errMsg}")</script>
+                            <c:if test="${not empty errMsg}">
+							<script type="text/javascript">alert("${errMsg}")</script>
+							</c:if>
 
                             </form>
                         </div>
