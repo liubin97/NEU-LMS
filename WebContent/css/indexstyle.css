@@ -81,22 +81,13 @@ body {
   margin-top: 0;
 }
 
+/*首页面板的高度*/
+.panel_margin{
+  margin-top: 30px;
+}
 
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.placeholders h4 {
-  margin-bottom: 0;
-}
-.placeholder {
-  margin-bottom: 20px;
-}
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
+.footer {
+  color: #999;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }

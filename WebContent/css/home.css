@@ -24,7 +24,7 @@
 /*页面的左边部分*/
 #main-nav {
     margin-left: 1px;
-    margin-top: 50px;
+    margin-top: 150px;
 }
 #main-nav.nav-tabs.nav-stacked > li > a {
     padding: 10px 8px;
@@ -61,7 +61,7 @@
     border-right: 1px solid #eee;
 }
 #main-nav.nav-tabs.nav-stacked > li {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 /*定义二级菜单样式*/
 .secondmenu a {
@@ -89,6 +89,19 @@
 .change_a a:hover{
     color: #c9302c;
 }
+/*控制表格和上面的大小*/
 .table_marign{
     margin-top: 30px;
+}
+/*borrow table margin*/
+.borrow_margin{
+    margin-top: 150px;
+}
+/*newbook margin*/
+.newbook_margin{
+    margin-top: 150px;
+}
+/*newstudent margin*/
+.newstudent_margin{
+    margin-top: 150px;
 }

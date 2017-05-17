@@ -35,9 +35,10 @@
              </div>
              <div id="navbar" class="navbar-collapse collapse">
                  <ul class="nav navbar-nav navbar-right">
-                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
-                     <li><a href="#">Settings</a></li>
-                     <li><a href="#">Profile</a></li>
+                     <li><a href="https://github.com/Xie-Dong/JSP_Work"><span class="fa fa-github"></span>GitHub</a></li>
+                     <li><a href="#"><span class="fa fa-spinner fa-pulse"></span></a></li>
+                     <li><a title="联系我们" href="mailto:xdmango@icloud.com"><span class="fa fa-envelope-o">联系我们</span></a></li>
+                     <li><a href="#"><span class="fa fa-chrome fa-pulse"></span></a></li>
                      <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
                  </ul>
              </div>
@@ -56,20 +57,6 @@
                          </a>
                      </li>
 
-
-                         <%--<li>--%>
-                         <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
-                         <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
-                         <%--学生管理--%>
-                         <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
-                         <%--</a>--%>
-                         <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
-                         <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
-                         <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
-                         <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
-                         <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
-                         <%--</ul>--%>
-                         <%--</li>--%>
                      <li class="active">
                          <a href="StudentsController" class="nav-header collapsed">
                              <i class="fa fa-user-circle-o fa-lg"></i>
@@ -90,7 +77,6 @@
                              <i class="fa fa-book fa-lg"></i>
                              <i class="fa fa-hand-lizard-o fa-lg"></i>
                              学生借书
-                             <span class="label label-warning pull-right">5</span>
                          </a>
                      </li>
 
@@ -117,6 +103,8 @@
                 <c:if scope="request" test="${action != 'update'}" var="cre">
                    <h2 class="page-header">添加学生</h2>
                 </c:if>
+         <div class="newstudent_margin">
+            <div class="col-md-6 col-md-offset-4">
                  <form class="form-horizontal" role="form" action="StudentsController">
 
                      <div class="form-group">
@@ -130,7 +118,7 @@
                      </div>
 
                      <div class="form-group">
-                         <label class="col-sm-2 control-label">性氏</label>
+                         <label class="col-sm-2 control-label">姓氏</label>
                          <div class="col-sm-2">
                              <input class="form-control" type="text" name="firstname" required
                                      <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
@@ -180,22 +168,6 @@
                      </div>
 
                      <div class="form-group">
-                         <label class="col-sm-2 control-label">性别</label>
-                         <div class="col-sm-2">
-                             <input type="radio" name="gender" value="1" <c:if test="${action == update and student.gender == 1 or empty action}"></c:if>/>男
-                             <input type="radio" name="gender" value="2" <c:if test="${action == update and student.gender == 2}"></c:if>/>女
-                         </div>
-                     </div>
-
-                     <div class="form-group">
-                         <label class="col-sm-2 control-label">婚否</label>
-                         <div class="col-sm-2">
-                             <input type="radio" name="ms" value="1" <c:if test="${action == update and student.ms == 1 or empty action}"></c:if>/> 结婚
-                             <input type="radio" name="ms" value="2" <c:if test="${action == update and student.ms == 2}"></c:if>/> 单身
-                         </div>
-                     </div>
-
-                     <div class="form-group">
                          <label class="col-sm-2 control-label">部门</label>
                          <div class="col-sm-2">
                              <input class="form-control" type="text" name="dept" required value="${student.dept}" style="width: 200px"/>
@@ -203,14 +175,31 @@
                      </div>
 
                      <div class="form-group">
+                         <label class="col-sm-2 control-label">性别</label>
+                         <div class="col-sm-3">
+                             <input type="radio" name="gender" value="1" <c:if test="${action == update and student.gender == 1 or empty action}"></c:if>/>男
+                             <input type="radio" name="gender" value="2" <c:if test="${action == update and student.gender == 2}"></c:if>/>女
+                         </div>
+                     </div>
+
+                     <div class="form-group">
+                         <label class="col-sm-2 control-label">婚否</label>
+                         <div class="col-sm-4">
+                             <input type="radio" name="ms" value="1" <c:if test="${action == update and student.ms == 1 or empty action}"></c:if>/> 结婚
+                             <input type="radio" name="ms" value="2" <c:if test="${action == update and student.ms == 2}"></c:if>checked/> 单身
+                         </div>
+                     </div>
+
+                     <div class="form-group">
                          <label class="col-sm-2 control-label"></label>
-                         <div class="col-sm-2">
-                             <button class="btn btn-default" type="submit" name="${param.action == 'update' ? 'update' : 'create'}" value="${param.action == 'update' ? 'Update' : 'Create'}"}"><span class="fa fa-check">提交</span></button>
+                         <div class="col-sm-3 col-sm-offset-1">
+                             <button class="btn btn-primary" type="submit" name="${param.action == 'update' ? 'update' : 'create'}" value="${param.action == 'update' ? 'Update' : 'Create'}"}"><span class="fa fa-check">提交</span></button>
                          </div>
                      </div>
 
                  </form>
-
+            </div>
+         </div>
 
              </div>
          </div>

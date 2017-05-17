@@ -1,7 +1,3 @@
-<%--
-    Document   : home
-    Author     : GJC
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,9 +31,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">Profile</a></li>
+                        <li><a href="https://github.com/Xie-Dong/JSP_Work"><span class="fa fa-github"></span>GitHub</a></li>
+                        <li><a href="#"><span class="fa fa-spinner fa-pulse"></span></a></li>
+                        <li><a title="联系我们" href="mailto:xdmango@icloud.com"><span class="fa fa-envelope-o">联系我们</span></a></li>
+                        <li><a href="#"><span class="fa fa-chrome fa-pulse"></span></a></li>
                         <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
                     </ul>
                 </div>
@@ -56,20 +53,6 @@
                             </a>
                         </li>
 
-
-                            <%--<li>--%>
-                            <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
-                            <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
-                            <%--学生管理--%>
-                            <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
-                            <%--</a>--%>
-                            <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
-                            <%--</ul>--%>
-                            <%--</li>--%>
                         <li>
                             <a href="StudentsController" class="nav-header collapsed" >
                                 <i class="fa fa-user-circle-o fa-lg"></i>
@@ -89,7 +72,6 @@
                                 <i class="fa fa-book fa-lg"></i>
                                 <i class="fa fa-hand-lizard-o fa-lg"></i>
                                 学生借书
-                                <span class="label label-warning pull-right">${size}</span>
                             </a>
                         </li>
 
@@ -112,53 +94,135 @@
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-                            <div class="col-md-12 column">
-                                <div class="carousel slide" id="carousel-778893">
-                                    <ol class="carousel-indicators">
-                                        <li class="active" data-slide-to="0" data-target="#carousel-778893">
-                                        </li>
-                                        <li data-slide-to="1" data-target="#carousel-778893">
-                                        </li>
-                                        <li data-slide-to="2" data-target="#carousel-778893">
-                                        </li>
-                                    </ol>
-                                    <div class="carousel-inner">
-                                        <div class="item active">
-                                            <img alt="" src="images/background.jpg" />
-                                            <div class="carousel-caption">
-                                                <h4>
-                                                    First Thumbnail label
-                                                </h4>
-                                                <p>
-                                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <img alt="" src="images/background1.jpg" />
-                                            <div class="carousel-caption">
-                                                <h4>
-                                                    Second Thumbnail label
-                                                </h4>
-                                                <p>
-                                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <img alt="" src="images/background4.jpg" />
-                                            <div class="carousel-caption">
-                                                <h4>
-                                                    Third Thumbnail label
-                                                </h4>
-                                                <p>
-                                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div> <a class="left carousel-control" href="#carousel-778893" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-778893" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <div class="col-md-12 column">
+                        <h1 class="text-center">
+                            尊敬的管理员<small>欢迎使用NEU LBS</small>
+                        </h1>
+                        <div class="carousel slide" id="carousel-443893">
+                            <ol class="carousel-indicators">
+                                <li data-slide-to="0" data-target="#carousel-443893">
+                                </li>
+                                <li data-slide-to="1" data-target="#carousel-443893">
+                                </li>
+                                <li data-slide-to="2" data-target="#carousel-443893">
+                                </li>
+                                <li data-slide-to="3" data-target="#carousel-443893" class="active">
+                                </li>
+
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item">
+                                    <img alt="" src="images/player1.jpeg"style="width: 1200px;height: 500px" />
+                                    <div class="carousel-caption">
+                                        <h4>
+                                            安静的时光
+                                        </h4>
+                                        <p>
+                                            世界是那么的大，大到你不可能走遍世界的每一个角落，却可以静静聆听世界的美妙。
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <img alt="" src="images/player3.jpg"style="width: 1200px;height: 500px" />
+                                    <div class="carousel-caption">
+                                        <h4>
+                                            打开心灵的那扇窗
+                                        </h4>
+                                        <p>
+                                            用心去感悟生活，用心去聆听美好，用心去追逐人生，用心去实现自我，用心去努力付出，用心去博取精彩！
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="item">
+                                    <img alt="" src="images/player4.jpg" style="width: 1200px;height: 500px" />
+                                    <div class="carousel-caption">
+                                        <h4>
+                                            与书为伴，幸福一生
+                                        </h4>
+                                        <p>
+                                            打开一本好书，如与益友交谈，看着一本好书，如受良师教会；合上一本好书，如与知己握别。
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="item active">
+                                    <img alt="" src="images/player5.jpg"style="width: 1200px;height: 500px" />
+                                    <div class="carousel-caption">
+                                        <h4>
+                                            多读书
+                                        </h4>
+                                        <p>
+                                            多读书，就会多一点自信；多读书，就会多一点魅力；多读书，就会多一点信仰；多读书，就会多一点进步。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> <a class="left carousel-control" href="#carousel-443893" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-443893" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </div>
+
+                        <div class="row panel_margin">
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img alt="300x200" src="images/thumb1.jpg" />
+                                    <div class="caption">
+                                        <h3>
+                                            设施
+                                        </h3>
+                                        <p>
+                                            图书馆是为读者在馆内使用文献而提供的专门场所。有普通阅览室，专门阅览室和参考研究室三种类型。
+                                        </p>
+                                        <p>
+                                            <a class="btn btn-primary" href="#"><span class="fa fa-hand-pointer-o">详情</a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img alt="300x200" src="images/thumb2.jpg" />
+                                    <div class="caption">
+                                        <h3>
+                                            秩序
+                                        </h3>
+                                        <p>
+                                            1.严禁抽烟<br>
+                                            2.保持安静<br>
+                                            3.爱护读书<br>
+                                            4.尊重管理人员<br>
+                                        </p>
+                                        </p>
+                                        <p>
+                                            <a class="btn btn-primary" href="#"><span class="fa fa-hand-pointer-o">详情</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="thumbnail">
+                                    <img alt="300x200" src="images/thumb3.jpg" />
+                                    <div class="caption">
+                                        <h3>
+                                            反馈意见
+                                        </h3>
+                                        <p>
+                                            欢迎大家对本图书馆提出意见，我们会有针对的进行调整。
+                                        </p>
+                                        <p>
+                                            <a class="btn btn-primary" href="#"><span class="fa fa-hand-pointer-o">详情</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    <div class="row footer">
+                        <div class="well well-lg" style="margin-bottom: 0px">© 2015-2011 Team 119. All rights reserved.<br>
+                            问题反馈：1234599435820（刘冰），1235465777574（宫建春）；技术咨询： 123343582525（谢东），1243543643737（范克强）
+                        </div>
+                    </div>
+
 
 
                 </div>

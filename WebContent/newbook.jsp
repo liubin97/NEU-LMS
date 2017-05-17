@@ -35,9 +35,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">Profile</a></li>
+                        <li><a href="https://github.com/Xie-Dong/JSP_Work"><span class="fa fa-github"></span>GitHub</a></li>
+                        <li><a href="#"><span class="fa fa-spinner fa-pulse"></span></a></li>
+                        <li><a title="联系我们" href="mailto:xdmango@icloud.com"><span class="fa fa-envelope-o">联系我们</span></a></li>
+                        <li><a href="#"><span class="fa fa-chrome fa-pulse"></span></a></li>
                         <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
                     </ul>
                 </div>
@@ -56,20 +57,6 @@
                             </a>
                         </li>
 
-
-                            <%--<li>--%>
-                            <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
-                            <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
-                            <%--学生管理--%>
-                            <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
-                            <%--</a>--%>
-                            <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
-                            <%--</ul>--%>
-                            <%--</li>--%>
                         <li>
                             <a href="StudentsController" class="nav-header collapsed" >
                                 <i class="fa fa-user-circle-o fa-lg"></i>
@@ -90,7 +77,6 @@
                                 <i class="fa fa-book fa-lg"></i>
                                 <i class="fa fa-hand-lizard-o fa-lg"></i>
                                 学生借书
-                                <span class="label label-warning pull-right">5</span>
                             </a>
                         </li>
 
@@ -118,11 +104,12 @@
                         <c:if scope="request" test="${action != 'update'}" var="cre">
                             <h2 class="page-header">添加新书</h2>
                         </c:if>
-
+                <div class="newbook_margin">
+                    <div class="col-md-6 col-md-offset-4">
                         <form class="form-horizontal" role="form" action="BooksController">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">书号</label>
-                                <div class="col-sm-2">
+                                <div class="col-sm-5">
                                     <input class="form-control" type="text"  name="isbn" required
                                             <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
                                            readonly value="<c:out value="${book.isbn}"/>"
@@ -132,7 +119,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">书名</label>
-                                <div class="col-sm-2">
+                                <div class="col-sm-5">
                                     <input class="form-control" type="text" name="bookname" required
                                             <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
                                            value="<c:out value="${book.bookname}"/>"
@@ -142,7 +129,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">作者</label>
-                                <div class="col-sm-2">
+                                <div class="col-sm-5">
                                     <input class="form-control" type="text" name="authorname" required
                                             <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
                                            value="<c:out value="${book.authorname}"/>"
@@ -152,7 +139,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">类别</label>
-                                <div class="col-sm-2">
+                                <div class="col-sm-5">
                                     <input class="form-control" type="text" name="category"
                                             <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
                                            value="<c:out value="${book.category}"/>"
@@ -162,7 +149,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">数量</label>
-                                <div class="col-sm-2">
+                                <div class="col-sm-5">
                                     <input class="form-control" type="text" name="selfno" required placeholder="请输入是整数"
                                             <% if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {%>
                                            value="<c:out value="${book.selfno}"/>"
@@ -172,16 +159,13 @@
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label"></label>
-                                <div class="col-sm-2">
-                                    <button class="btn btn-default" type="submit" name="${param.action == 'update' ? 'update' : 'create'}" value="${param.action == 'update' ? 'Update' : 'Create'}"><span class="fa fa-check">提交</span></button>
+                                <div class="col-sm-5">
+                                    <button class="btn btn-primary" type="submit" name="${param.action == 'update' ? 'update' : 'create'}" value="${param.action == 'update' ? 'Update' : 'Create'}"><span class="fa fa-check">提交</span></button>
                                 </div>
                             </div>
-
                         </form>
-
-
-
-
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

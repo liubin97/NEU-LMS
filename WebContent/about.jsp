@@ -29,9 +29,10 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Profile</a></li>
+                    <li><a href="https://github.com/Xie-Dong/JSP_Work"><span class="fa fa-github"></span>GitHub</a></li>
+                    <li><a href="#"><span class="fa fa-spinner fa-pulse"></span></a></li>
+                    <li><a title="联系我们" href="mailto:xdmango@icloud.com"><span class="fa fa-envelope-o">联系我们</span></a></li>
+                    <li><a href="#"><span class="fa fa-chrome fa-pulse"></span></a></li>
                     <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
                 </ul>
             </div>
@@ -50,20 +51,6 @@
                         </a>
                     </li>
 
-
-                        <%--<li>--%>
-                        <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
-                        <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
-                        <%--学生管理--%>
-                        <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
-                        <%--</a>--%>
-                        <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
-                        <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
-                        <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
-                        <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
-                        <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
-                        <%--</ul>--%>
-                        <%--</li>--%>
                     <li>
                         <a href="StudentsController" class="nav-header collapsed" >
                             <i class="fa fa-user-circle-o fa-lg"></i>
@@ -83,7 +70,6 @@
                             <i class="fa fa-book fa-lg"></i>
                             <i class="fa fa-hand-lizard-o fa-lg"></i>
                             学生借书
-                            <span class="label label-warning pull-right">${size}</span>
                         </a>
                     </li>
 
@@ -106,7 +92,28 @@
             </div>
 
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                主窗口
+                <div class="jumbotron">
+                    <h1>
+                        本馆简介
+                    </h1>
+                    <p class="lead">
+                        &nbsp&nbsp&nbsp&nbsp图书馆采用较先进的管理员系统，实现了图书馆业务自动化，管理员能够实时完成读者借阅信息查询等功能。图书馆以“尊重、理解、关心、服务”为工作理念，积极主动地为我校的教学和科研服务，建立了完整的藏借阅大空间一体化的读者服务体系。
+                    </p>
+                    <p class="lead">
+                            &nbsp&nbsp&nbsp&nbsp除此之外，图书馆构建了先进的网络设施，通过校园网为全校用户提供信息检索服务。目前，图书馆在自动化、网络化建设方面取得了很大的发展。我们的发展目标是建设一个现代化的、多功能的、高度文明的大学图书馆，一个在文献保障、信息环境、服务水平、人员素质等方面接近世界先进水平的大学图书馆。
+                     </p>
+                     <p class="lead">
+                            &nbsp&nbsp&nbsp&nbsp本图书馆实行了大面积开架借阅，并提出了“能开架的不闭架，能外借的不内阅”的口号，本图书馆立足于多年开架服务的实践，从图书馆管理与服务人性化的视角出发，从公益性图书馆以读者为中心的理念出发，对原有开架方式进行全方位的分析与理性思考，并创新性地提出并实现了一种新的开架服务超市型管理模式，也称“超市式”开架。
+                     </p>
+
+                    <p class="lead">
+                            &nbsp&nbsp&nbsp&nbsp“超市式”开架的实施，变原来的“以书库管理为中心”为“以读者需求为中心”，实现了多种文献资源共存、多种服务功能相融合的复合式服务，不但扩大了流通、提高了文献资源的利用率，也体现了图书馆对读者的人文关怀。
+                    </p>
+
+                    <p>
+                        <a class="btn btn-primary btn-large" href="#">了解</a>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

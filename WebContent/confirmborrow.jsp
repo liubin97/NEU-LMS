@@ -35,9 +35,10 @@
                   </div>
                   <div id="navbar" class="navbar-collapse collapse">
                       <ul class="nav navbar-nav navbar-right">
-                          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
-                          <li><a href="#">Settings</a></li>
-                          <li><a href="#">Profile</a></li>
+                          <li><a href="https://github.com/Xie-Dong/JSP_Work"><span class="fa fa-github"></span>GitHub</a></li>
+                          <li><a href="#"><span class="fa fa-spinner fa-pulse"></span></a></li>
+                          <li><a title="联系我们" href="mailto:xdmango@icloud.com"><span class="fa fa-envelope-o">联系我们</span></a></li>
+                          <li><a href="#"><span class="fa fa-chrome fa-pulse"></span></a></li>
                           <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
                       </ul>
                   </div>
@@ -56,20 +57,6 @@
                               </a>
                           </li>
 
-
-                              <%--<li>--%>
-                              <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
-                              <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
-                              <%--学生管理--%>
-                              <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
-                              <%--</a>--%>
-                              <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
-                              <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
-                              <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
-                              <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
-                              <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
-                              <%--</ul>--%>
-                              <%--</li>--%>
                           <li>
                               <a href="StudentsController" class="nav-header collapsed" >
                                   <i class="fa fa-user-circle-o fa-lg"></i>
@@ -90,7 +77,6 @@
                                   <i class="fa fa-book fa-lg"></i>
                                   <i class="fa fa-hand-lizard-o fa-lg"></i>
                                   学生借书
-                                  <span class="label label-warning pull-right">${size}</span>
                               </a>
                           </li>
 
@@ -114,6 +100,7 @@
                   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
                               <h2 class="page-header">借书确认</h2>
+                             <div class="table_marign">
                               <form class="form-horizontal" role="form" action="BorrowController">
 
                                   <table class="table table-striped">
@@ -176,11 +163,13 @@
                                   <input type="hidden" name="returndate" value="<%=returndate%>" />
                                   <input type="hidden" name="studentid" value="${student.id}" />
                                   <input type="hidden" name="bookid" value="${book.isbn}" />
-
-                                  <button type="submit" name="confirm" value="Confirm" class="btn btn-default"><spann class="fa fa-check-circle">确认</spann></button>
-                                  <button type="submit" name="notconfirm" value="Cancel" class="btn btn-default"><span class="fa fa-times-circle">取消</span></button>
+                                <div class="col-sm-4 col-sm-offset-5">
+                                  <button type="submit" name="confirm" value="Confirm" class="btn btn-primary"><spann class="fa fa-check-circle">确认</spann></button>
+                                  <button type="submit" name="notconfirm" value="Cancel" class="btn btn-danger"><span class="fa fa-times-circle">取消</span></button>
+                                </div>
 
                               </form>
+                             </div>
 
 
                   </div>

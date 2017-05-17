@@ -20,6 +20,14 @@
     <title>Borrow</title>
 </head>
 <body>
+
+<script type="text/javascript">
+    $(function(){
+        $(".close").click(function(){
+            $("#myAlert").alert();
+        });
+    });
+</script>
     <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
         <!--顶部的导航栏-->
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -31,9 +39,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">Profile</a></li>
+                        <li><a href="https://github.com/Xie-Dong/JSP_Work"><span class="fa fa-github"></span>GitHub</a></li>
+                        <li><a href="#"><span class="fa fa-spinner fa-pulse"></span></a></li>
+                        <li><a title="联系我们" href="mailto:xdmango@icloud.com"><span class="fa fa-envelope-o">联系我们</span></a></li>
+                        <li><a href="#"><span class="fa fa-chrome fa-pulse"></span></a></li>
                         <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
                     </ul>
                 </div>
@@ -52,20 +61,6 @@
                             </a>
                         </li>
 
-
-                            <%--<li>--%>
-                            <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
-                            <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
-                            <%--学生管理--%>
-                            <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
-                            <%--</a>--%>
-                            <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
-                            <%--</ul>--%>
-                            <%--</li>--%>
                         <li>
                             <a href="StudentsController" class="nav-header collapsed" >
                                 <i class="fa fa-user-circle-o fa-lg"></i>
@@ -86,7 +81,6 @@
                                 <i class="fa fa-book fa-lg"></i>
                                 <i class="fa fa-hand-lizard-o fa-lg"></i>
                                 学生借书
-                                <span class="label label-warning pull-right">${size}</span>
                             </a>
                         </li>
 
@@ -110,8 +104,23 @@
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                                  <h2 class="page-header">学生借书</h2>
 
-                            <c:if test="${flag}"><font color="green"><b>*** 借书成功!!!</b></font><br/><br/> </c:if>
+                            <c:if test="${flag}">
+                                <div id="myAlert" class="alert alert-success">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>借书成功！</strong>
+                                </div>
 
+                            </c:if>
+
+                    <c:if test="${not empty errMsg}">
+                        <div id="myAlert" class="alert alert-danger">
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>${errMsg}</strong>
+                        </div>
+                    </c:if>
+
+                    <div class="borrow_margin">
+                        <div class="col-md-6 col-md-offset-4">
                             <form class="form-horizontal" role="form" action="BorrowController">
 
                                 <div class="form-group">
@@ -129,16 +138,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button  class="btn btn-default" type="submit" name="submit" value="提交"/>提交</button>
+                                    <div class="col-md-offset-4 col-md-8">
+                                        <button  class="btn btn-primary" type="submit" name="submit" value="提交"/>提交</button>
                                     </div>
                                 </div>
                             </form>
-                            <c:if test="${not empty errMsg}">
-							<script type="text/javascript">alert("${errMsg}")</script>
-							</c:if>
-
-                            </form>
+                        </div>
+                    </div>
                         </div>
                     </div>
                 </div>

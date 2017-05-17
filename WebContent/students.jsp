@@ -1,7 +1,3 @@
-<%--
-    Document   : students
-    Author     : GJC
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.sql.ResultSet"%>
@@ -29,6 +25,14 @@
     <title>Student</title>
 </head>
 <body>
+<script type="text/javascript">
+    $(function(){
+        $(".close").click(function(){
+            $("#myAlert").alert();
+        });
+    });
+</script>
+
     <c:if test="${sessionScope.username != null && sessionScope.username !=''}">
         <!--顶部的导航栏-->
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,9 +45,10 @@
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">Profile</a></li>
+                        <li><a href="https://github.com/Xie-Dong/JSP_Work"><span class="fa fa-github"></span>GitHub</a></li>
+                        <li><a href="#"><span class="fa fa-spinner fa-pulse"></span></a></li>
+                        <li><a title="联系我们" href="mailto:xdmango@icloud.com"><span class="fa fa-envelope-o">联系我们</span></a></li>
+                        <li><a href="#"><span class="fa fa-chrome fa-pulse"></span></a></li>
                         <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
                     </ul>
                 </div>
@@ -62,20 +67,6 @@
                             </a>
                         </li>
 
-
-                            <%--<li>--%>
-                            <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
-                            <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
-                            <%--学生管理--%>
-                            <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
-                            <%--</a>--%>
-                            <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
-                            <%--</ul>--%>
-                            <%--</li>--%>
                         <li class="active">
                             <a href="StudentsController" class="nav-header collapsed" >
                                 <i class="fa fa-user-circle-o fa-lg"></i>
@@ -95,7 +86,6 @@
                                 <i class="fa fa-book fa-lg"></i>
                                 <i class="fa fa-hand-lizard-o fa-lg"></i>
                                 学生借书
-                                <span class="label label-warning pull-right">5</span>
                             </a>
                         </li>
 
@@ -122,7 +112,7 @@
                     <div class="table-responsive">
 
                         <div class="col-md-11">
-                        <form class="form-inline" role="form" action="StudentsController">
+                        <form class="form-inline" role="form" action="">
                             <div class="form-group">
                                 <label class="sr-only" for="name">名称</label>
                                 <input type="text" name="searchbox" class="form-control" id="name" placeholder="请输入搜索内容">
@@ -137,14 +127,24 @@
 
                     </div>
                         <c:if scope="request" test="${exists == 'yes'}" var="reg">
-                            <font color="red"><b>*** 学生Id 重复!!</b></font><br/><br/>
+                            <div id="myAlert" class="alert alert-danger">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong>学生Id 重复!!</strong>
+                            </div>
                         </c:if>
                         <c:if scope="request" test="${flag == 'reg'}" var="reg">
-                            <font color="green"><b>*** 注册成功!!</b></font><br/><br/>
+                            <div id="myAlert" class="alert alert-success">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong> 注册成功!!</strong>
+                            </div>
                         </c:if>
                         <c:if scope="request" test="${flag == 'update'}" var="upd">
-                            <font color="green"><b>*** 更新成功!!</b></font><br/><br/>
+                            <div id="myAlert" class="alert alert-success">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong>更新成功!!</strong>
+                            </div>
                         </c:if>
+                    <div class="table_marign">
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -176,35 +176,29 @@
                             </tr>
                         </c:forEach>
                         </tbody>
-                </div>
-            </div>
-        </div>
+                    </table>
+                        <ul class=" pager">
 
+                            <c:if test="${currentPage != 1}">
+                                <li><a href="StudentsController?page=${currentPage - 1}">&laquo;</a></li>
+                            </c:if>
+                            <c:forEach begin="1" end="${noOfPages}" var="i">
+                                <c:choose>
+                                    <c:when test="${currentPage eq i}">
+                                        <li><a href="#" class = "active">${i}</a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a href="StudentsController?page=${i}">${i}</a></li>
 
-                </table>
-                
-               <ul class=" pager">
-                  
-                        <c:if test="${currentPage != 1}">
-				         <li><a href="StudentsController?page=${currentPage - 1}">&laquo;</a></li>
-				    	</c:if>
-                        	<c:forEach begin="1" end="${noOfPages}" var="i">
-				                <c:choose>
-				                    <c:when test="${currentPage eq i}">
-				                       <li><a href="#" class = "active">${i}</a></li> 
-				                    </c:when>
-				                    <c:otherwise>
-				                    	<li><a href="StudentsController?page=${i}">${i}</a></li>
-				    
-				                    </c:otherwise>
-				                </c:choose>
-				            </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
                             <c:if test="${currentPage lt noOfPages}">
-				        		<li><a href="StudentsController?page=${currentPage + 1}">&raquo;</a></li>
-				    		</c:if>
+                                <li><a href="StudentsController?page=${currentPage + 1}">&raquo;</a></li>
+                            </c:if>
                         </ul>
-               
-
+                    </div>
+                </div>
             </div>
         </div>
     </c:if>

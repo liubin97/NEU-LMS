@@ -42,7 +42,7 @@
 <!-- /container -->
 
 <c:if test="${not empty errMsg}">
-<script type="text/javascript">alert("${errMsg}")</script>
+    <div class="error"><b>Warming: </b> <c:out value="${errMsg}"/><b></b></div>
 </c:if>
 
 </body>

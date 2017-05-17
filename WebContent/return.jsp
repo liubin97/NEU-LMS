@@ -1,3 +1,4 @@
+
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.time.Instant"%>
@@ -38,9 +39,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Log-in</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">Profile</a></li>
+                        <li><a href="https://github.com/Xie-Dong/JSP_Work"><span class="fa fa-github"></span>GitHub</a></li>
+                        <li><a href="#"><span class="fa fa-spinner fa-pulse"></span></a></li>
+                        <li><a title="联系我们" href="mailto:xdmango@icloud.com"><span class="fa fa-envelope-o">联系我们</span></a></li>
+                        <li><a href="#"><span class="fa fa-chrome fa-pulse"></span></a></li>
                         <li><a href="logout.jsp"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
                     </ul>
                 </div>
@@ -59,20 +61,6 @@
                             </a>
                         </li>
 
-
-                            <%--<li>--%>
-                            <%--<a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse">--%>
-                            <%--<i class="fa fa-user-circle-o fa-lg"></i>--%>
-                            <%--学生管理--%>
-                            <%--<span class="pull-right glyphicon glyphicon-chevron-down"></span>--%>
-                            <%--</a>--%>
-                            <%--<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-user"></i>学生管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>书本管理</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-asterisk"></i>学生借书</a></li>--%>
-                            <%--<li><a href="#"><i class="glyphicon glyphicon-edit"></i>学生还书</a></li>--%>
-                            <%--</ul>--%>
-                            <%--</li>--%>
                         <li>
                             <a href="StudentsController" class="nav-header collapsed" >
                                 <i class="fa fa-user-circle-o fa-lg"></i>
@@ -92,7 +80,6 @@
                                 <i class="fa fa-book fa-lg"></i>
                                 <i class="fa fa-hand-lizard-o fa-lg"></i>
                                 学生借书
-                                <span class="label label-warning pull-right">5</span>
                             </a>
                         </li>
 
@@ -115,9 +102,8 @@
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                             <h2 class="page-header">返还书本 </h2>
-                            <c:if test="${flag}"><font color="green"><b>*** 还书成功!!!</b></font><br/><br/> </c:if>
                                 <div class="table-responsive">
-                                    <form class="form-inline" role="form" action="ReturnController">
+                                    <form class="form-inline" role="form" action="">
                                         <div class="form-group">
                                             <label class="sr-only" for="name">名称</label>
                                             <input type="text" name="searchbox" class="form-control" id="name" placeholder="请输入搜索内容">
@@ -126,6 +112,21 @@
                                     </form>
                                 </div>
 
+                            <c:if test="${flag}">
+                                <div id="myAlert" class="alert alert-success">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>借书成功！</strong>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function(){
+                                        $(".close").click(function(){
+                                            $("#myAlert").alert();
+                                        });
+                                    });
+                                </script>
+                            </c:if>
+
+                    <div class="table_marign">
                         <table class="table table-hover" >
 
                             <thead>
@@ -141,6 +142,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+
                                 <tbody>
                                 <c:forEach var="br" items="${allBr}">
                                     <tr>
@@ -183,33 +185,32 @@
                                     </tr>
                                 </c:forEach>
                                 </tbody>
-
                             </table>
-                            <%--For displaying Page numbers. 
-				    The when condition does not display a link for the current page--%>
-				   <ul class=" pager">
-                  
-                        <c:if test="${currentPage != 1}">
-				         <li><a href="ReturnController?page=${currentPage - 1}">&laquo;</a></li>
-				    	</c:if>
-                        	<c:forEach begin="1" end="${noOfPages}" var="i">
-				                <c:choose>
-				                    <c:when test="${currentPage eq i}">
-				                       <li><a href="#" class = "active">${i}</a></li> 
-				                    </c:when>
-				                    <c:otherwise>
-				                    	<li><a href="ReturnController?page=${i}">${i}</a></li>
-				    
-				                    </c:otherwise>
-				                </c:choose>
-				            </c:forEach>
+                            <%--For displaying Page numbers.  The when condition does not display a link for the current page--%>
+                        <ul class=" pager">
+
+                            <c:if test="${currentPage != 1}">
+                                <li><a href="ReturnController?page=${currentPage - 1}">&laquo;</a></li>
+                            </c:if>
+                            <c:forEach begin="1" end="${noOfPages}" var="i">
+                                <c:choose>
+                                    <c:when test="${currentPage eq i}">
+                                        <li><a href="#" class = "active">${i}</a></li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li><a href="ReturnController?page=${i}">${i}</a></li>
+
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
                             <c:if test="${currentPage lt noOfPages}">
-				        		<li><a href="ReturnController?page=${currentPage + 1}">&raquo;</a></li>
-				    		</c:if>
+                                <li><a href="ReturnController?page=${currentPage + 1}">&raquo;</a></li>
+                            </c:if>
                         </ul>
-                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </c:if>
 </body>
 </html>
