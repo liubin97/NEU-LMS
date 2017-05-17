@@ -36,11 +36,7 @@ public class StudentsController extends HttpServlet {
             StudentsDao dao = new StudentsDao();
             dao.deleteStudent(request.getParameter("id"));
 
-            List<Students> allStudents = dao.getAllStudents();
-            request.setAttribute("allStudents", allStudents);
-            request.setAttribute("size", allStudents.size());
-            request.getRequestDispatcher("students.jsp").forward(request, response);
-
+            pagination(request,response);
         } else if (request.getParameter("action") != null && request.getParameter("action").equals("update")) {
 
             StudentsDao dao = new StudentsDao();
@@ -73,15 +69,12 @@ public class StudentsController extends HttpServlet {
             } else {
                 request.setAttribute("exists", "yes");
             }
-            List<Students> allStudents = dao.getAllStudents();
-            request.setAttribute("allStudents", allStudents);
-            request.setAttribute("size", allStudents.size());
+            
             request.setAttribute("id", student.getId());
-            request.getRequestDispatcher("students.jsp").forward(request, response);
+            pagination(request,response);
 
         } else if (request.getParameter("update") != null) {
 
- //           System.out.println("update");
             Students student = new Students();
             StudentsDao dao = new StudentsDao();
 
@@ -101,25 +94,11 @@ public class StudentsController extends HttpServlet {
             if (flag) {
                 request.setAttribute("flag", "update");
             }
-            List<Students> allStudents = dao.getAllStudents();
-            request.setAttribute("allStudents", allStudents);
-            request.setAttribute("size", allStudents.size());
             request.setAttribute("id", student.getId());
-            request.getRequestDispatcher("students.jsp").forward(request, response);
+            pagination(request,response);
 
         } else if(request.getParameter("searchbox") != null){ 
- //       	System.out.println("on");
-//        	StudentsDao studentsDao = new StudentsDao();	
-//    		if(request.getParameter("searchbox").length() == 0){
-//    			request.setAttribute("errMsg", "²»ÄÜÎª¿Õ!!!");
-//    			request.getRequestDispatcher("students.jsp").forward(request, response);
-//    		}
-//    		
-//    		String searchKey = request.getParameter("searchbox");
-//    		List<Students> allStudents = studentsDao.Search(searchKey);
-//    		request.setAttribute("allStudents", allStudents);
-//    		request.setAttribute("size", allStudents.size());
-//    		request.getRequestDispatcher("students.jsp").forward(request, response);
+ 
         	int page = 1;
             int recordsPerPage = 6;
             if(request.getParameter("page") != null)
@@ -137,14 +116,7 @@ public class StudentsController extends HttpServlet {
             request.getRequestDispatcher("students.jsp").forward(request, response);
         
         } else {
-//            System.out.println(request.getParameter("action"));
-//            StudentsDao dao = new StudentsDao();
-//            List<Students> allStudents = dao.getAllStudents();
-//
-//            request.setAttribute("allStudents", allStudents);
-//            request.setAttribute("size", allStudents.size());
-////            System.out.println(allStudents.size());
-//            request.getRequestDispatcher("students.jsp").forward(request, response);
+
         	pagination(request,response); 	
         }
 	}

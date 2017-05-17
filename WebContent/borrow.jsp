@@ -134,6 +134,7 @@
                                     </div>
                                 </div>
                             </form>
+                            <script type="text/javascript">alert("${errMsg}")</script>
 
                             </form>
                         </div>
