@@ -71,39 +71,39 @@ public class ReturnController extends HttpServlet {
 					flag = borrowDao.updateStatusById(Integer.valueOf(request.getParameter("id")));
 					if (flag) {
 
-						List<Borrow> allBorrows = borrowDao.getAllBorrowsToReturn();
+//						List<Borrow> allBorrows = borrowDao.getAllBorrowsToReturn();
+//
+//						BooksDao booksDao = new BooksDao();
+//						StudentsDao studentsDao = new StudentsDao();
+//
+//						List<BRCombo> allBr = new ArrayList<>();
 
-						BooksDao booksDao = new BooksDao();
-						StudentsDao studentsDao = new StudentsDao();
+//						for (Borrow b : allBorrows) {
+//
+//							Books book = booksDao.getBookById(b.getBookId());
+//							Students student = studentsDao.getStudentById(b.getStudentId());
+//
+//							BRCombo brc = new BRCombo();
+//
+//							brc.setId(b.getId());
+//							brc.setTitle(book.getBookname());
+//							brc.setAuthorName(book.getAuthorname());
+//
+//							brc.setStudentId(b.getStudentId());
+//							brc.setStudentName(student.getFirstName() + " " + student.getLastName());
+//
+//							brc.setBorrowDate(b.getBorrowDate());
+//							brc.setReturnDate(b.getReturnDate());
+//
+//							brc.setStatus(b.getStatus());
+//
+//							allBr.add(brc);
+//						}
 
-						List<BRCombo> allBr = new ArrayList<>();
-
-						for (Borrow b : allBorrows) {
-
-							Books book = booksDao.getBookById(b.getBookId());
-							Students student = studentsDao.getStudentById(b.getStudentId());
-
-							BRCombo brc = new BRCombo();
-
-							brc.setId(b.getId());
-							brc.setTitle(book.getBookname());
-							brc.setAuthorName(book.getAuthorname());
-
-							brc.setStudentId(b.getStudentId());
-							brc.setStudentName(student.getFirstName() + " " + student.getLastName());
-
-							brc.setBorrowDate(b.getBorrowDate());
-							brc.setReturnDate(b.getReturnDate());
-
-							brc.setStatus(b.getStatus());
-
-							allBr.add(brc);
-						}
-
-						request.setAttribute("allBr", allBr);
-						request.setAttribute("size", allBr.size());
+						
 						request.setAttribute("flag", flag);
-						request.getRequestDispatcher("return.jsp").forward(request, response);
+					
+						pagination(request,response);
 					} else {
 						out.println("Error 1 !!!");
 					}
